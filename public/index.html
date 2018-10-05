@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -121,7 +121,7 @@
 
 
 
-  <title>langman's blog</title>
+  <title>langman's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -140,7 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -239,6 +239,308 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/莫比乌斯思路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/05/莫比乌斯思路/" itemprop="url">莫比乌斯思想</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T14:06:18+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="莫比乌斯的一些想法"><a class="markdownIt-Anchor" href="#莫比乌斯的一些想法"></a> 莫比乌斯的一些想法</h3>
+<h4 id="首先你要知道莫比乌斯是什么"><a class="markdownIt-Anchor" href="#首先你要知道莫比乌斯是什么"></a> 首先你要知道莫比乌斯是什么</h4>
+<blockquote>
+<p> 这个在前期的时候，他是一种知识点，到后期，它就是一种思想，一种工具。说到底他就是一种容斥的操作</p>
+</blockquote>
+<h4 id="现在主流的莫比乌斯有两种"><a class="markdownIt-Anchor" href="#现在主流的莫比乌斯有两种"></a> 现在主流的莫比乌斯有两种</h4>
+<ol>
+<li>第一种<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mi>n</mi></msub><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>d</mi><mi mathvariant="normal">∣</mi><mi>n</mi></mrow><mi>n</mi></msubsup><msub><mi>f</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">F_n = \sum_{d|n}^n f_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8042920000000001em;"></span><span class="strut bottom" style="height:1.2790020000000002em;vertical-align:-0.47471em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8042920000000001em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">d</span><span class="mord mtight">∣</span><span class="mord mathit mtight">n</span></span></span></span><span style="top:-3.2029000000000005em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.47471em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>n</mi></msub><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>d</mi><mi mathvariant="normal">∣</mi><mi>n</mi></mrow><mi>n</mi></msubsup><msub><mi>u</mi><mi>d</mi></msub><mo>∗</mo><msub><mi>F</mi><mfrac><mrow><mi>n</mi></mrow><mrow><mi>d</mi></mrow></mfrac></msub></mrow><annotation encoding="application/x-tex">f_n = \sum_{d|n}^n u_d*F_{\frac{n}{d}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8042920000000001em;"></span><span class="strut bottom" style="height:1.2790020000000002em;vertical-align:-0.47471em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8042920000000001em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">d</span><span class="mord mtight">∣</span><span class="mord mathit mtight">n</span></span></span></span><span style="top:-3.2029000000000005em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.47471em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33408000000000004em;"><span style="top:-2.85em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathit mtight">d</span></span></span></span><span style="top:-3.1275em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy mtight" style="height:0.245em;"><svg width="400em" height="0.245em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3907999999999999em;"></span></span></span></span></span></span></span></span></li>
+<li>第二种<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mi>n</mi></msub><mo>=</mo><msub><mo>∑</mo><mrow><mi>n</mi><mi mathvariant="normal">∣</mi><mi>d</mi></mrow></msub><msub><mi>f</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">F_n = \sum_{n|d}f_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.22471em;vertical-align:-0.47471em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.22528999999999993em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span><span class="mord mtight">∣</span><span class="mord mathit mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.47471em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>n</mi></msub><mo>=</mo><msub><mo>∑</mo><mrow><mi>n</mi><mi mathvariant="normal">∣</mi><mi>d</mi></mrow></msub><msub><mi>u</mi><mfrac><mrow><mi>d</mi></mrow><mrow><mi>n</mi></mrow></mfrac></msub><mo>∗</mo><msub><mi>F</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.26202em;vertical-align:-0.5120199999999999em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.22528999999999993em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span><span class="mord mtight">∣</span><span class="mord mathit mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.47471em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.7287800000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8800285714285714em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span></span></span></span><span style="top:-3.1275em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy mtight" style="height:0.245em;"><svg width="400em" height="0.245em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathit mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5120199999999999em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></li>
+</ol>
+<blockquote>
+<p> 具体的公式推导，一种常见的是你通过举一些例子推出这个公式，还有就是通过狄利克雷卷去证明这个式子，我比较菜，就不献丑了.你可以去百度看下，我的博客也不会特别去处理这些东西，能力不够，我现在对很多东西也都是会用，原理什么的不敢恭维。我写的更多在于我自己对于这些东西的思考。我是通过那些方面去思考的。</p>
+</blockquote>
+<h4 id="怎么用"><a class="markdownIt-Anchor" href="#怎么用"></a> 怎么用</h4>
+<p> 其实上面的公式也说明了,这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>u</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">u_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span>莫比乌斯函数是一定的，那我们只需要去构造<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>n</mi></msub><mo separator="true">,</mo><msub><mi>F</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">f_n,F_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span>就ok了，当然了，难点也就在于这个构造的方法。<br>
+ 不过我们这里的公式已经给你了，你去思考怎么凑便会简单一点，还有就是我们这样干的目的最终是为了容斥，这样想就会稍微简单一点吧。</p>
+<h4 id="模板"><a class="markdownIt-Anchor" href="#模板"></a> 模板</h4>
+<p>  放一份莫比乌斯的板子，哎呀妈呀数学真的太强大了。其实线性筛真的强大，他能处理所有的积性函数真的秀</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">bool</span> check[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> mu[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Moblus</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    clr(check,<span class="number">0</span>);</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= MAXN; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( !check[i] )</span><br><span class="line">        &#123;</span><br><span class="line">            prime[tot++] = i;</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i * prime[j] &gt; MAXN) <span class="keyword">break</span>;</span><br><span class="line">            check[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>( i % prime[j] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/博弈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/05/博弈/" itemprop="url">博弈论方面(acm) [之前看博弈的一些理解]</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T14:00:51+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="博弈方面的一些看法"><a class="markdownIt-Anchor" href="#博弈方面的一些看法"></a> 博弈方面的一些看法</h1>
+<blockquote>
+<p>博弈这个玩意是真的烦，会的时候是弱智题不会的时候他妈天方夜谭。</p>
+</blockquote>
+<p>说下个人的看法以及各种题型</p>
+<h2 id="主要的解题思想"><a class="markdownIt-Anchor" href="#主要的解题思想"></a> 主要的解题思想</h2>
+<p>官方说的是通过必败点和必胜点来判定<br>
+先通过必败点来推，直接来看必胜点，把问题抽象成图 把状态抽象成点，必败点就是先手必败点，然后通过必败点能走到的搞成必胜点，如过有一个状态没有走过 而且他后面的路都是必胜点那么他就是必败点。感觉就像dp一样，记忆化搜索。<br>
+当然题目不可能出的那么简单的。<br>
+不过根据雄爷定理，万事不离期宗，掌握基本，扩展自己去发掘。</p>
+<h2 id="主要的题型"><a class="markdownIt-Anchor" href="#主要的题型"></a> 主要的题型</h2>
+<h4 id="巴什博弈"><a class="markdownIt-Anchor" href="#巴什博弈"></a> 巴什博弈</h4>
+<p>这个是最简单的博弈，就是一堆东西，每个人自己能拿1-n件，谁最后一个拿完谁赢，这个是最简单的，不记录。</p>
+<h4 id="威佐夫博弈"><a class="markdownIt-Anchor" href="#威佐夫博弈"></a> 威佐夫博弈</h4>
+<p>有两堆各若干个物品，两个人轮流从某一堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
+这个的解题思路在于通过前面的那个np问题来解决，用局势来思考这些问题，前几个局势在于(0,0),(1,2),(3,5),(4,7)…然后一些大佬就总结出了一些牛逼的结论( ak,bk),<code>ak=k*(spat(5)+1)/2 , bk = ak+k</code>人才。</p>
+<h4 id="fibonacci博弈"><a class="markdownIt-Anchor" href="#fibonacci博弈"></a> Fibonacci博弈</h4>
+<p>有一堆个数为n的石子，游戏双方轮流取石子，满足：</p>
+<ol>
+<li>先手不能在第一次把所有的石子取完；</li>
+<li>之后每次可以取的石子数介于1到对手刚取的石子数的2倍之间（包含1和对手刚取的石子数的2倍）。 约定取走最后一个石子的人为赢家。</li>
+</ol>
+<blockquote>
+<p>这个的解决办法涉及到齐肯多夫定理不去了解。没办法本人太笨</p>
+</blockquote>
+<p>结论是 <code>当n为Fibonacci数时，先手必败</code></p>
+<h4 id="尼姆博弈"><a class="markdownIt-Anchor" href="#尼姆博弈"></a> 尼姆博弈</h4>
+<p>有三堆各若干个物品，两个人轮流从某一堆取任意多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
+这个博弈有点意思 他的<code>必败点的局势在于(a,b,c) a^b^c = 0</code></p>
+<blockquote>
+<p>不过不换怎么说，注意他们的游戏方式 这只是最基础的几种博弈，方法都是通过前面的那个基础来进行扩展的</p>
+</blockquote>
+<h4 id="sg函数"><a class="markdownIt-Anchor" href="#sg函数"></a> SG函数</h4>
+<p>这个在看之前感觉很高级但是啊，好像也就是一个dp的过程，通过一个必败点，看成起点然后，那个方法看成通向下一个起点的路，然后找所有能直接到这个必败点的必胜点。好像也就那么回事。好像能解决的都是小数字题这是一个板子，f里面存的是方法，多堆问题可以转化成异或来解决。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getSG</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="built_in">memset</span>(SG,<span class="number">0</span>,<span class="keyword">sizeof</span>(SG));</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(S,<span class="number">0</span>,<span class="keyword">sizeof</span>(S));</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; f[j] &lt;= i &amp;&amp; j &lt;= N; j++)</span><br><span class="line">            S[SG[i-f[j]]] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>;;j++) <span class="keyword">if</span>(!S[j])&#123;</span><br><span class="line">            SG[i] = j;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解题的方法"><a class="markdownIt-Anchor" href="#解题的方法"></a> 解题的方法</h2>
+<ul>
+<li>1　：相信自己的第一感觉</li>
+<li>2　：博弈都会和一些特别的数搭边 ， 所以第一件事坑定是分析局势然后找找看是不是有特别的意义，像什么 卡特兰数，fib数列 ，幂次方，异或的值是否为0；</li>
+<li>3 : 不挂怎么说，记得打表。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/hello-for-test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -310,7 +612,8 @@
       
         
           
-            <h2 id="第一次搭自己的博客-总感觉好奇怪"><a href="#第一次搭自己的博客-总感觉好奇怪" class="headerlink" title="第一次搭自己的博客 总感觉好奇怪"></a>第一次搭自己的博客 总感觉好奇怪</h2><blockquote>
+            <h2 id="第一次搭自己的博客-总感觉好奇怪"><a class="markdownIt-Anchor" href="#第一次搭自己的博客-总感觉好奇怪"></a> 第一次搭自己的博客 总感觉好奇怪</h2>
+<blockquote>
 <p>先放一篇水贴，其他以后再更新</p>
 </blockquote>
 
@@ -432,12 +735,18 @@
       
         
           
-            <h3 id="最大上升子序列"><a href="#最大上升子序列" class="headerlink" title="最大上升子序列"></a>最大上升子序列</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LIS(LDS)</span><br><span class="line">template&lt;class Cmp&gt;  </span><br><span class="line">int LIS (Cmp cmp)(nlogn)  </span><br><span class="line">&#123;  </span><br><span class="line">    static int m, end[N];  </span><br><span class="line">    m = 0;  </span><br><span class="line">    for (int i=0;i&lt;n;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        int pos = lower_bound(end, end+m, a[i], cmp)-end;  </span><br><span class="line">        end[pos] = a[i], m += pos==m;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return m;  </span><br><span class="line">&#125;  </span><br><span class="line">    cout &lt;&lt; LIS(less&lt;int&gt;()) &lt;&lt; endl;         //严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(less_equal&lt;int&gt;()) &lt;&lt; endl;   //非严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(greater&lt;int&gt;()) &lt;&lt; endl;      //严格下降  </span><br><span class="line">    cout &lt;&lt; LIS(greater_equal&lt;int&gt;()) &lt;&lt; endl;//非严格下降</span><br></pre></td></tr></table></figure>
-<h3 id="最大公共子序列"><a href="#最大公共子序列" class="headerlink" title="最大公共子序列"></a>最大公共子序列</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">留个递推公式,差不多的意思(n^2)</span><br><span class="line"></span><br><span class="line">   dp[i][j]=dp[i-1][j-1]+1;</span><br><span class="line">   dp[i][j]=max(dp[i-1][j],dp[i][j-1]);</span><br><span class="line">   dp[0][0]=0;</span><br></pre></td></tr></table></figure>
-<h3 id="前向星造图法"><a href="#前向星造图法" class="headerlink" title="前向星造图法"></a>前向星造图法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span>&#123;</span>          <span class="comment">//图的单位,边的结构体</span></span><br><span class="line">  <span class="keyword">int</span> to;             <span class="comment">//儿子</span></span><br><span class="line">  <span class="keyword">int</span> next;           <span class="comment">//同父的下一个结点</span></span><br><span class="line">  <span class="keyword">int</span> w;              <span class="comment">//权</span></span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span> <span class="comment">//加边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  edge[tot].to = v;</span><br><span class="line">  edge[tot].w = w;</span><br><span class="line">  edge[tot].next = head[u];</span><br><span class="line">  head[u] = tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(u,v)</span><span class="comment">//遍历的规则,单边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i =head[u];i!=<span class="number">-1</span>;i = edge[i].next)</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">     <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">     伪代码区</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span><span class="comment">//双边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u];i!=<span class="number">-1</span>;i=edge[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">int</span> v = edge[i].next;</span><br><span class="line">      <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">      <span class="keyword">if</span>(v != father)</span><br><span class="line">      &#123;</span><br><span class="line">        伪代码</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="什么是开挂"><a href="#什么是开挂" class="headerlink" title="什么是开挂"></a>什么是开挂</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">poj <span class="number">3107</span> 不开 <span class="number">500</span>ms</span><br><span class="line">         开了 <span class="number">188</span>ms</span><br><span class="line">         类型应该是何前面的(<span class="keyword">int</span>) 相对应</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//加快输入输出</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> k=<span class="number">0</span>;<span class="keyword">char</span> ls;ls=getchar();<span class="keyword">for</span>(;ls&lt;<span class="string">'0'</span>||ls&gt;<span class="string">'9'</span>;k=ls,ls=getchar());</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">for</span>(;ls&gt;=<span class="string">'0'</span>&amp;&amp;ls&lt;=<span class="string">'9'</span>;ls=getchar())x=x*<span class="number">10</span>+ls-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="string">'-'</span>)x=<span class="number">0</span>-x;<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="状态压缩里面常用的一些东西"><a href="#状态压缩里面常用的一些东西" class="headerlink" title="状态压缩里面常用的一些东西"></a>状态压缩里面常用的一些东西</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1 获得当前行的数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getnum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    x &amp;= x<span class="number">-1</span>;</span><br><span class="line">    ret++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2 看当前行左右是不是满足题设</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x &amp; x&lt;&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 看是不是可以满足条件,和题目给的图一样,是可以放的,并且和上一个是不是会冲突</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">suit</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x&amp;y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="数位dp"><a href="#数位dp" class="headerlink" title="数位dp"></a>数位dp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 把各个数位上的数字存进去</span></span><br><span class="line">ll dfs(int len(数位),....(中间各个东西的转化),flag(是否在最高位,要限制))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span>(len&lt;<span class="number">0</span>) <span class="keyword">return</span> ..;</span><br><span class="line">  <span class="keyword">if</span>(!flag &amp;&amp; ~dp[len][...]) <span class="keyword">return</span> dp[len][...];</span><br><span class="line">  ll ans= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> Max = flag?shu[len]:<span class="number">9</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=Max;i++)</span><br><span class="line">   &#123;</span><br><span class="line">     ans += dfs(len<span class="number">-1</span>,...,flag&amp;&amp;i==Max);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(!flag) dp[len][...] = ans;</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">slove</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> co = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    shu[co] = x%<span class="number">10</span>;</span><br><span class="line">    x/=<span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dfs(co<span class="number">-1</span>,...,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">这是主要的一个套路;</span><br></pre></td></tr></table></figure>
+            <h3 id="最大上升子序列"><a class="markdownIt-Anchor" href="#最大上升子序列"></a> 最大上升子序列</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LIS(LDS)</span><br><span class="line">template&lt;class Cmp&gt;  </span><br><span class="line">int LIS (Cmp cmp)(nlogn)  </span><br><span class="line">&#123;  </span><br><span class="line">    static int m, end[N];  </span><br><span class="line">    m = 0;  </span><br><span class="line">    for (int i=0;i&lt;n;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        int pos = lower_bound(end, end+m, a[i], cmp)-end;  </span><br><span class="line">        end[pos] = a[i], m += pos==m;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return m;  </span><br><span class="line">&#125;  </span><br><span class="line">    cout &lt;&lt; LIS(less&lt;int&gt;()) &lt;&lt; endl;         //严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(less_equal&lt;int&gt;()) &lt;&lt; endl;   //非严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(greater&lt;int&gt;()) &lt;&lt; endl;      //严格下降  </span><br><span class="line">    cout &lt;&lt; LIS(greater_equal&lt;int&gt;()) &lt;&lt; endl;//非严格下降</span><br></pre></td></tr></table></figure>
+<h3 id="最大公共子序列"><a class="markdownIt-Anchor" href="#最大公共子序列"></a> 最大公共子序列</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">留个递推公式,差不多的意思(n^2)</span><br><span class="line"></span><br><span class="line">   dp[i][j]=dp[i-1][j-1]+1;</span><br><span class="line">   dp[i][j]=max(dp[i-1][j],dp[i][j-1]);</span><br><span class="line">   dp[0][0]=0;</span><br></pre></td></tr></table></figure>
+<h3 id="前向星造图法"><a class="markdownIt-Anchor" href="#前向星造图法"></a> 前向星造图法</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span>&#123;</span>          <span class="comment">//图的单位,边的结构体</span></span><br><span class="line">  <span class="keyword">int</span> to;             <span class="comment">//儿子</span></span><br><span class="line">  <span class="keyword">int</span> next;           <span class="comment">//同父的下一个结点</span></span><br><span class="line">  <span class="keyword">int</span> w;              <span class="comment">//权</span></span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span> <span class="comment">//加边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  edge[tot].to = v;</span><br><span class="line">  edge[tot].w = w;</span><br><span class="line">  edge[tot].next = head[u];</span><br><span class="line">  head[u] = tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(u,v)</span><span class="comment">//遍历的规则,单边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i =head[u];i!=<span class="number">-1</span>;i = edge[i].next)</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">     <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">     伪代码区</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span><span class="comment">//双边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u];i!=<span class="number">-1</span>;i=edge[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">int</span> v = edge[i].next;</span><br><span class="line">      <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">      <span class="keyword">if</span>(v != father)</span><br><span class="line">      &#123;</span><br><span class="line">        伪代码</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="什么是开挂"><a class="markdownIt-Anchor" href="#什么是开挂"></a> 什么是开挂</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">poj <span class="number">3107</span> 不开 <span class="number">500</span>ms</span><br><span class="line">         开了 <span class="number">188</span>ms</span><br><span class="line">         类型应该是何前面的(<span class="keyword">int</span>) 相对应</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//加快输入输出</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> k=<span class="number">0</span>;<span class="keyword">char</span> ls;ls=getchar();<span class="keyword">for</span>(;ls&lt;<span class="string">'0'</span>||ls&gt;<span class="string">'9'</span>;k=ls,ls=getchar());</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">for</span>(;ls&gt;=<span class="string">'0'</span>&amp;&amp;ls&lt;=<span class="string">'9'</span>;ls=getchar())x=x*<span class="number">10</span>+ls-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="string">'-'</span>)x=<span class="number">0</span>-x;<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="状态压缩里面常用的一些东西"><a class="markdownIt-Anchor" href="#状态压缩里面常用的一些东西"></a> 状态压缩里面常用的一些东西</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1 获得当前行的数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getnum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    x &amp;= x<span class="number">-1</span>;</span><br><span class="line">    ret++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2 看当前行左右是不是满足题设</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x &amp; x&lt;&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 看是不是可以满足条件,和题目给的图一样,是可以放的,并且和上一个是不是会冲突</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">suit</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x&amp;y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数位dp"><a class="markdownIt-Anchor" href="#数位dp"></a> 数位dp</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 把各个数位上的数字存进去</span></span><br><span class="line">ll dfs(int len(数位),....(中间各个东西的转化),flag(是否在最高位,要限制))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span>(len&lt;<span class="number">0</span>) <span class="keyword">return</span> ..;</span><br><span class="line">  <span class="keyword">if</span>(!flag &amp;&amp; ~dp[len][...]) <span class="keyword">return</span> dp[len][...];</span><br><span class="line">  ll ans= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> Max = flag?shu[len]:<span class="number">9</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=Max;i++)</span><br><span class="line">   &#123;</span><br><span class="line">     ans += dfs(len<span class="number">-1</span>,...,flag&amp;&amp;i==Max);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(!flag) dp[len][...] = ans;</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">slove</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> co = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    shu[co] = x%<span class="number">10</span>;</span><br><span class="line">    x/=<span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dfs(co<span class="number">-1</span>,...,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">这是主要的一个套路;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -557,265 +866,48 @@
       
         
           
-            <h2 id="dp的定义"><a href="#dp的定义" class="headerlink" title="dp的定义"></a>dp的定义</h2><p>dp ，就是记忆化搜索，<br>精髓在于他的 记忆化，<br>相当于 把大问题转化成子问题<br>然后找出问题之间的关系，从子状态 转移到 其他的状态。</p>
-<h2 id="背包方面"><a href="#背包方面" class="headerlink" title="背包方面"></a>背包方面</h2><p>他的状态点在于<br>当背包容量为x时，他的最佳状态<br>然后找出容量是x的时候能从<br>哪几个子状态转移过来。<br>难点在于：<br>1：背包的构造<br>2：背包状态转移方程的寻找<br>3：方向是从前到后，还是从后到前<br>4：dp维数的确定</p>
-<h2 id="树形dp"><a href="#树形dp" class="headerlink" title="树形dp"></a>树形dp</h2><p>在树上做dp<br>那么状态的关系很好找，<br>树上的一个结点他们的关系，只有，父亲结点，子结点，兄弟结点;<br>所以关键在于找出父子结点的一些关系;<br>套路基本就是两遍dfs<br>而且兄弟结点用的不多，基本只是父子关系</p>
-<h2 id="状压dp"><a href="#状压dp" class="headerlink" title="状压dp"></a>状压dp</h2><p>首先，你得知道哪些可以压缩<br>大多数可以压缩的在于<br>1：他的数量很少<br>2：他的状态很少，一般是 开 或 闭，两个状态的多<br>用到了很多的位运算，他不像背包。<br>他是从子结点推出父结点<br>基本就是些套路，dp<br>关键还是在于状态转移方程的寻找。</p>
-<h2 id="数位dp"><a href="#数位dp" class="headerlink" title="数位dp"></a>数位dp</h2><p>我觉得难点在于两个<br>1 状态转移方程的寻找<br>2 状态转移的状态点比较难找到<br>首先我要知道他的记忆化出现在那个方面<br>我在之前的一些操作有可能出现相同的结果<br>这时候就体现出记忆化的用处<br>而且我要知道通过怎么样的状态我可以确定不重复.<br>状态转移的时候也需要注意<br>从后一位和前一位的关系来寻找转移方程<br>而且有时候还是一个状态到另一个状态来写,不是简单的数位间的关系求解.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/source/about/index/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/source/about/index/" itemprop="url">一份简单的《我是谁》</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T02:32:47+08:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="欢迎访问我的博客"><a href="#欢迎访问我的博客" class="headerlink" title="欢迎访问我的博客"></a>欢迎访问我的博客</h3><ul>
-<li>我是上海大学的的一个无名的小学渣</li>
-<li>一个喜欢玩，比较浪的男生</li>
-<li>一个比较弱的<strong>ACM_er</strong>,主攻数学和dp方面</li>
-<li><a href="http://codeforces.com/profile/Langman_orz" target="_blank" rel="noopener">langman_orz</a>这个是我的个人cf主页</li>
-</ul>
-<h4 id="最近想搭个博客去记录一下最近干了啥"><a href="#最近想搭个博客去记录一下最近干了啥" class="headerlink" title="最近想搭个博客去记录一下最近干了啥"></a>最近想搭个博客去记录一下最近干了啥</h4><p>所以这个博客就出来啦<br>还请各位看官多来看看，增加访问量</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T02:22:04+08:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h2 id="dp的定义"><a class="markdownIt-Anchor" href="#dp的定义"></a> dp的定义</h2>
+<p>dp ，就是记忆化搜索，<br>
+精髓在于他的 记忆化，<br>
+相当于 把大问题转化成子问题<br>
+然后找出问题之间的关系，从子状态 转移到 其他的状态。</p>
+<h2 id="背包方面"><a class="markdownIt-Anchor" href="#背包方面"></a> 背包方面</h2>
+<p>他的状态点在于<br>
+当背包容量为x时，他的最佳状态<br>
+然后找出容量是x的时候能从<br>
+哪几个子状态转移过来。<br>
+难点在于：<br>
+1：背包的构造<br>
+2：背包状态转移方程的寻找<br>
+3：方向是从前到后，还是从后到前<br>
+4：dp维数的确定</p>
+<h2 id="树形dp"><a class="markdownIt-Anchor" href="#树形dp"></a> 树形dp</h2>
+<p>在树上做dp<br>
+那么状态的关系很好找，<br>
+树上的一个结点他们的关系，只有，父亲结点，子结点，兄弟结点;<br>
+所以关键在于找出父子结点的一些关系;<br>
+套路基本就是两遍dfs<br>
+而且兄弟结点用的不多，基本只是父子关系</p>
+<h2 id="状压dp"><a class="markdownIt-Anchor" href="#状压dp"></a> 状压dp</h2>
+<p>首先，你得知道哪些可以压缩<br>
+大多数可以压缩的在于<br>
+1：他的数量很少<br>
+2：他的状态很少，一般是 开 或 闭，两个状态的多<br>
+用到了很多的位运算，他不像背包。<br>
+他是从子结点推出父结点<br>
+基本就是些套路，dp<br>
+关键还是在于状态转移方程的寻找。</p>
+<h2 id="数位dp"><a class="markdownIt-Anchor" href="#数位dp"></a> 数位dp</h2>
+<p>我觉得难点在于两个<br>
+1 状态转移方程的寻找<br>
+2 状态转移的状态点比较难找到<br>
+首先我要知道他的记忆化出现在那个方面<br>
+我在之前的一些操作有可能出现相同的结果<br>
+这时候就体现出记忆化的用处<br>
+而且我要知道通过怎么样的状态我可以确定不重复.<br>
+状态转移的时候也需要注意<br>
+从后一位和前一位的关系来寻找转移方程<br>
+而且有时候还是一个状态到另一个状态来写,不是简单的数位间的关系求解.</p>
 
           
         
@@ -905,6 +997,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
@@ -1121,6 +1222,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
