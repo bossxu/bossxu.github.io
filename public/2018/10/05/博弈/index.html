@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ACM,博弈," />
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="博弈方面的一些看法  博弈这个玩意是真的烦，会的时候是弱智题不会的时候他妈天方夜谭。  说下个人的看法以及各种题型  主要的解题思想 官方说的是通过必败点和必胜点来判定 先通过必败点来推，直接来看必胜点，把问题抽象成图 把状态抽象成点，必败点就是先手必败点，然后通过必败点能走到的搞成必胜点，如过有一个状态没有走过 而且他后面的路都是必胜点那么他就是必败点。感觉就像dp一样，记忆化搜索。 当然题目">
+<meta name="keywords" content="ACM,博弈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博弈论方面(acm) [之前看博弈的一些理解]">
 <meta property="og:url" content="http://yoursite.com/2018/10/05/博弈/index.html">
 <meta property="og:site_name" content="langman&#39;s blog">
 <meta property="og:description" content="博弈方面的一些看法  博弈这个玩意是真的烦，会的时候是弱智题不会的时候他妈天方夜谭。  说下个人的看法以及各种题型  主要的解题思想 官方说的是通过必败点和必胜点来判定 先通过必败点来推，直接来看必胜点，把问题抽象成图 把状态抽象成点，必败点就是先手必败点，然后通过必败点能走到的搞成必胜点，如过有一个状态没有走过 而且他后面的路都是必胜点那么他就是必败点。感觉就像dp一样，记忆化搜索。 当然题目">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-05T18:48:58.944Z">
+<meta property="og:updated_time" content="2018-10-06T07:52:45.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博弈论方面(acm) [之前看博弈的一些理解]">
 <meta name="twitter:description" content="博弈方面的一些看法  博弈这个玩意是真的烦，会的时候是弱智题不会的时候他妈天方夜谭。  说下个人的看法以及各种题型  主要的解题思想 官方说的是通过必败点和必胜点来判定 先通过必败点来推，直接来看必胜点，把问题抽象成图 把状态抽象成点，必败点就是先手必败点，然后通过必败点能走到的搞成必胜点，如过有一个状态没有走过 而且他后面的路都是必胜点那么他就是必败点。感觉就像dp一样，记忆化搜索。 当然题目">
@@ -200,6 +201,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -247,7 +258,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="langman">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/mypic.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -365,6 +376,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ACM/" rel="tag"># ACM</a>
+          
+            <a href="/tags/博弈/" rel="tag"># 博弈</a>
+          
+        </div>
+      
 
       
       
@@ -452,6 +471,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/mypic.jpg"
+                alt="langman" />
+            
               <p class="site-author-name" itemprop="name">langman</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -475,10 +498,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -487,11 +510,49 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bossxu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:7567636763@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
           
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cubercsl.cn/" title="csl" target="_blank">csl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ybmj.xyz/" title="ybmj" target="_blank">ybmj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://500kg.github.io/" title="500kg" target="_blank">500kg</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -663,7 +724,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -716,26 +777,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
