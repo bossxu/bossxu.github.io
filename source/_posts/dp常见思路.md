@@ -1,5 +1,6 @@
 ---
 title: dp常见思路  
+tags: [ACM,dp]
 ---
 ## dp的定义
 dp ，就是记忆化搜索，
