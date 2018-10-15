@@ -1,6 +1,6 @@
 ---
 title: 期望dp
-tags：[ACM,数学，期望]
+tags: [dp,ACM,期望]
 ---
 
 ## 期望dp
