@@ -13,6 +13,7 @@ date: 2018-10-23 12:47:44
 |[cubercsl](http://cubercsl.cn/)|菜队，无所不能|
 |[OneDay_pyf](http://blog.csdn.net/oneday_pyf)|伦神|
 |[lightina](http://blog.lightina.cn/)|陈老板|
+|[烧包](http://shaobaobaoer.cn/)|大佬，啥都会|
 
 # 常用链接
 - [oeis](http://oeis.org/)
