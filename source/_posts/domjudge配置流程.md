@@ -157,6 +157,37 @@ default	http://localhost/domjudge/api	judgehost	Dgj9COHDKa5bSEmT
 你会发现这两个格式是相同的，你把判题端的用户名和密码换成和客户端的一样就可以了。
 
 #### 4.构建 chroot 环境
-这里的用处是他把你的判题环境也集成好了，你只要选择安装一下就可以，但是它那里面是默认源，可能有点不太行，推荐用阿里源，用了两次没啥问题。
+这里的用处是他把你的判题环境也集成好了，你只要选择安装一下就可以，但是它那里面是默认源，可能有点不太行，推荐用阿里源，用了两次没啥问题。使用 vim 等文本编辑器编辑`~/domjudge/judgehost/dj_make_chroot`脚本，搜索 mirror 这个关键字，并更改搜索到的 ubuntu 的 mirror 为国内源,`http://mirrors.aliyun.com/ubuntu/`然后运行脚本
+```shell
+./dj_make_chroot
+```
+这个时候就要下载很多东西，慢慢等。
+
+#### 5.设置cgruop
+使用 vim 等文本编辑器编辑 /etc/default/grub 这个文件，对其中的这一行做如下修改：
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
+```
+然后执行
+```shell
+update-grub
+```
+#### 6.重启计算机
+`reboot`指令就行。
+
+#### 7.开判题
+```shell
+cd ~/domjudge/judgehost/bin
+sudo ./create_cgroups
+```
+然后开一个窗口
+```shell
+sudo ./judgedaemon -n 0
+```
+这个就意味着0号在跑了，我们一共在前面设置了4个，如果想再开一个，就直接再开个控制台，把0换1,2,3.
+
+到这个地方，基本上，基础的就配好了，接着你就可以通过默认用户和密码登录，尝试交题。如果出错，那我就不知道了。
 
 
+----
+## 管理员方面。
