@@ -259,6 +259,221 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/27/domjudge配置流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/27/domjudge配置流程/" itemprop="url">domjudge配置流程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-27T13:01:05+08:00">
+                2018-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="domjudge配置流程"><a class="markdownIt-Anchor" href="#domjudge配置流程"></a> domjudge配置流程</h1>
+<p>对于很多的acmer来说，domjuege不是一个陌生的东西，很多的比赛里面，用到的系统不是domjudge就是pc2，就我个人来说，感觉domjudge用的好像更多点，受老师的嘱咐，最近把domjudge的基础流程走了一遍。</p>
+<blockquote>
+<p>因为博主的实力不太够，我是刚退役，就会点acm的题，很多知识都是小白，所以这个可以说是从零开始的，很多都是建立在我的认知上的，如有不对，还请谅解</p>
+</blockquote>
+<h4 id="domjudge是什么呢"><a class="markdownIt-Anchor" href="#domjudge是什么呢"></a> domjudge是什么呢？</h4>
+<blockquote>
+<p>一些没怎么打过现场赛的可能对这个东西还是比较陌生。这个简单的说就是一个开源的在线判题系统，他很多东西都帮你集成好了，你利用这个平台，可以搭建一些小的比赛，网络赛很多是放在别的学校的oj上的，但是现场赛，不能上网，只能局域网访问，这个时候来一个domjudge这种类型的就很好。基本所有的功能它都有。</p>
+</blockquote>
+<h2 id="怎么配"><a class="markdownIt-Anchor" href="#怎么配"></a> 怎么配</h2>
+<p>domjudge的配置分为两步，这两步理论上是可以独立开来的。<br>
+第一步是配domjudge的服务端，第二步是配置donjudge的判题端。</p>
+<h3 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h3>
+<p>我这里用的服务端和判题端都是在 <code>ubuntu 18.04</code>下面进行操作的。而且我看网上的很多文档也是这样写的。</p>
+<h4 id="1-安装依赖包和环境"><a class="markdownIt-Anchor" href="#1-安装依赖包和环境"></a> 1. 安装依赖包和环境：</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade &amp;&amp; sudo apt-get update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gcc g++ make zip unzip mariadb-server \</span><br><span class="line">        apache2 php php-cli libapache2-mod-php php-zip \</span><br><span class="line">        php-gd php-curl php-mysql php-json php-xml php-mbstring \</span><br><span class="line">        acl bsdmainutils ntp phpmyadmin python-pygments \</span><br><span class="line">        libcgroup-dev linuxdoc-tools linuxdoc-tools-text \</span><br><span class="line">        groff texlive-latex-recommended texlive-latex-extra \</span><br><span class="line">        texlive-fonts-recommended texlive-lang-european</span><br></pre></td></tr></table></figure>
+<p>安装时选择 <code>apache2</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo phpenmod json</span><br></pre></td></tr></table></figure>
+<h4 id="2-编译domjudge"><a class="markdownIt-Anchor" href="#2-编译domjudge"></a> 2. 编译domjudge</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd Downloads   </span><br><span class="line">wget https://www.domjudge.org/releases/domjudge-6.0.3.tar.gz      </span><br><span class="line">tar -zxvf domjudge-6.0.2.tar.gz</span><br></pre></td></tr></table></figure>
+<p>这里也可以通过上<a href="https://www.domjudge.org" target="_blank" rel="noopener">官网</a>进行下载，下载和解压的地址，要记住。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd domjudge-6.0.2</span><br><span class="line">./configure --prefix=$HOME/domjudge --with-baseurl=127.0.0.1</span><br><span class="line">make domserver &amp;&amp; sudo make install-domserver</span><br><span class="line">make judgehost &amp;&amp; sudo make install-judgehost</span><br><span class="line">make docs &amp;&amp; sudo make install-docs</span><br></pre></td></tr></table></figure>
+<p>那个127.0.0.1表示的是你的默认端口，后面两句分别是安装服务端和判题端。</p>
+<hr>
+<h3 id="domjudge服务端"><a class="markdownIt-Anchor" href="#domjudge服务端"></a> domjudge服务端</h3>
+<h4 id="1-配置数据库"><a class="markdownIt-Anchor" href="#1-配置数据库"></a> 1. 配置数据库</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/domjudge/domserver</span><br><span class="line">sudo bin/dj_setup_database -u root install</span><br></pre></td></tr></table></figure>
+<p>这里有个点在于 ~ 对应的是主目录</p>
+<h4 id="2-配置web服务器"><a class="markdownIt-Anchor" href="#2-配置web服务器"></a> 2. 配置web服务器</h4>
+<p>这个提示写在前面:<br>
+注意先不要直接复制跑代码，要把<code>ln</code>命令中的<code>username</code>换成你的实际用户名.<br>
+不然你就要去把那个文件删除，从新去添加。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~/domjudge/domserver</span><br><span class="line">sudo ln -s /home/username/domjudge/domserver/etc/apache.conf /etc/apache2/conf-available/domjudge.conf</span><br><span class="line">sudo a2enmod rewrite</span><br><span class="line">sudo a2enconf domjudge</span><br><span class="line">sudo systemctl reload apache2</span><br></pre></td></tr></table></figure>
+<p>这个时候你可以通过连接上<code>http://127.0.0.1/domjudge</code>.通过默认用户名<code>admin</code>和密码<code>admin</code>登录后台。</p>
+<h4 id="3-配置mysql"><a class="markdownIt-Anchor" href="#3-配置mysql"></a> 3. 配置mysql</h4>
+<p>编辑<code>/etc/mysql/my.cnf</code>,追加以下内容：</p>
+<blockquote>
+<p>这里口头以’/'开始就表示是以根目录开始，这里记得别用vi，没有vim记得更新，vi是真的难用，不接受反驳。啦啦啦。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysql]</span><br><span class="line">max_connections = 1000</span><br><span class="line">max_allowed_packet = 16MB</span><br><span class="line">innodb_log_file_size = 48MB</span><br></pre></td></tr></table></figure>
+<p>其中 max_allowed_packet 数值改成两倍于题目测试数据文件的大小，innodb_log_file_size 数值改成十倍于题目测试数据文件的大小。这里我不是很清楚用处，目前还没有碰到这些问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mysql</span><br></pre></td></tr></table></figure>
+<h4 id="4-配置php"><a class="markdownIt-Anchor" href="#4-配置php"></a> 4. 配置php</h4>
+<p>编辑<code>~/domjudge/domserver/etc/apache.conf</code>,取消以下几行内容前的注释:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_php7.c&gt;</span><br><span class="line">php_value max_file_uploads      100</span><br><span class="line">php_value upload_max_filesize   128M</span><br><span class="line">php_value post_max_size         128M</span><br><span class="line">php_value memory_limit          512M</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<p>编辑<code>/etc/php/7.2/apache2/php.ini</code>,搜索<code>date.timezone</code>关键字,取消前面的注释将值设为你们的地址，举例来说<code>Asia/Shanghai</code>.这里的是否有格式要求我就不清楚了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
+<h4 id="5-配置apache"><a class="markdownIt-Anchor" href="#5-配置apache"></a> 5. 配置apache</h4>
+<p>编辑<code>/etc/apache2/apache2.conf</code>，搜索<code>KeepAlive</code>关键字，并将其值设为<code>off</code>,并加一行<br>
+<code>MaxClients 1000</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
+<p>不知道干嘛用的。</p>
+<blockquote>
+<p>现在怎么说呢，这个服务端算是配好了，至于后面的一些加题，加队，加人的操作，在后面会给出来。后面配置这些文件的方案都是可视化的，在集成的网站上你会通过一个像用户的操作，去进行更改，这个在后面再说。</p>
+</blockquote>
+<hr>
+<h2 id="judgehost配置"><a class="markdownIt-Anchor" href="#judgehost配置"></a> judgehost配置</h2>
+<p>这里的判题系统，怎么说呢，和我一开始的想法是不一样的，一开始我是认为，服务器去找判题机，这样每次配置的时候都是很烦的一件事，后来弄清楚，这里的原理是这样，这里的judgehost的身份相当于是一个用户，judgehost去向服务端发送请求，通过这个就可以让这些东西建立链接。所以我们服务端配好后，就不用去管一些奇奇怪怪的东西了，接着去配判题系统就可以了。</p>
+<h4 id="1-添加用户"><a class="markdownIt-Anchor" href="#1-添加用户"></a> 1. 添加用户</h4>
+<p>这个就看你一台主机想配几个判题机了。一般来说，现在的电脑都不会只配置一个判题机吧，我这里就默认4个了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /nonexistent -U -M -s /bin/false domjudge-run-0</span><br><span class="line">useradd -d /nonexistent -U -M -s /bin/false domjudge-run-1</span><br><span class="line">useradd -d /nonexistent -U -M -s /bin/false domjudge-run-2</span><br><span class="line">useradd -d /nonexistent -U -M -s /bin/false domjudge-run-3</span><br><span class="line">groupadd domjudge-run</span><br></pre></td></tr></table></figure>
+<p>对于多核判题，每次判题记得要运行<code>~/domjudge/judgehost/bin</code>里面的<code>create_cgroups</code>,记得开权限，怎么执行，就是 <code>sudo ./create_cgroups</code>，不然会报错。</p>
+<h4 id="2配置-sudoers"><a class="markdownIt-Anchor" href="#2配置-sudoers"></a> 2.配置 sudoers</h4>
+<p>这里的作用应该是给domjudge_run权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp $HOME/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/</span><br></pre></td></tr></table></figure>
+<h4 id="3修改rest密码"><a class="markdownIt-Anchor" href="#3修改rest密码"></a> 3.修改rest密码</h4>
+<p>这里的用处在于，建立链接的时候，让服务端辨识。<br>
+找到<code>~/domjudge/judgehost/etc/restapi.secret</code>,这个文件的一个样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default	http://localhost/domjudge/api	judgehost	Dgj9COHDKa5bSEmT</span><br></pre></td></tr></table></figure>
+<p>其中将那个<code>localhost</code>换成你服务器的IP地址，不知道的话，用<code>ifconfig</code>看下.<br>
+后面的<code>judgehost</code> 是用户名，<code>Dgj9COHDKa5bSEmT</code>是密码。这个也是要修改的。</p>
+<p>打开你服务端所安装的电脑的目录<code>~/domjudge/domserver/etc/restapi.secret</code><br>
+你会发现这两个格式是相同的，你把判题端的用户名和密码换成和客户端的一样就可以了。</p>
+<h4 id="4构建-chroot-环境"><a class="markdownIt-Anchor" href="#4构建-chroot-环境"></a> 4.构建 chroot 环境</h4>
+<p>这里的用处是他把你的判题环境也集成好了，你只要选择安装一下就可以，但是它那里面是默认源，可能有点不太行，推荐用阿里源，用了两次没啥问题。使用 vim 等文本编辑器编辑<code>~/domjudge/judgehost/dj_make_chroot</code>脚本，搜索 mirror 这个关键字，并更改搜索到的 ubuntu 的 mirror 为国内源,<code>http://mirrors.aliyun.com/ubuntu/</code>然后运行脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./dj_make_chroot</span><br></pre></td></tr></table></figure>
+<p>这个时候就要下载很多东西，慢慢等。</p>
+<h4 id="5设置cgruop"><a class="markdownIt-Anchor" href="#5设置cgruop"></a> 5.设置cgruop</h4>
+<p>使用 vim 等文本编辑器编辑 /etc/default/grub 这个文件，对其中的这一行做如下修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet cgroup_enable=memory swapaccount=1&quot;</span><br></pre></td></tr></table></figure>
+<p>然后执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-grub</span><br></pre></td></tr></table></figure>
+<h4 id="6重启计算机"><a class="markdownIt-Anchor" href="#6重启计算机"></a> 6.重启计算机</h4>
+<p><code>reboot</code>指令就行。</p>
+<h4 id="7开判题"><a class="markdownIt-Anchor" href="#7开判题"></a> 7.开判题</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/domjudge/judgehost/bin</span><br><span class="line">sudo ./create_cgroups</span><br></pre></td></tr></table></figure>
+<p>然后开一个窗口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./judgedaemon -n 0</span><br></pre></td></tr></table></figure>
+<p>这个就意味着0号在跑了，我们一共在前面设置了4个，如果想再开一个，就直接再开个控制台，把0换1,2,3.</p>
+<p>到这个地方，基本上，基础的就配好了，接着你就可以通过默认用户和密码登录，尝试交题。如果出错，那我就不知道了。</p>
+<hr>
+<h2 id="管理员方面"><a class="markdownIt-Anchor" href="#管理员方面"></a> 管理员方面。</h2>
+<p>要先创建比赛，加入题目，加入队伍，加入用户，用户与队伍通过一个外健来对应，而你创建比赛后，比赛里面的题目可以通过调用来处理，<br>
+这里我还不是很清楚，然后队伍的批量导入是需要一定的格式的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/期望概率常见题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1243,7 +1458,7 @@ $f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d $</li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1256,7 +1471,7 @@ $f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d $</li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
