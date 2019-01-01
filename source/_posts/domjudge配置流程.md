@@ -21,8 +21,8 @@ domjudge的配置分为两步，这两步理论上是可以独立开来的。
 我这里用的服务端和判题端都是在 `ubuntu 18.04`下面进行操作的。而且我看网上的很多文档也是这样写的。
 
 #### 1. 安装依赖包和环境：
-``` shell
-sudo apt-get upgrade && sudo apt-get update 
+```shell
+sudo apt-get upgrade && sudo apt-get update
 ```
 
 ```shell
@@ -32,13 +32,17 @@ sudo apt install gcc g++ make zip unzip mariadb-server \
         acl bsdmainutils ntp phpmyadmin python-pygments \
         libcgroup-dev linuxdoc-tools linuxdoc-tools-text \
         groff texlive-latex-recommended texlive-latex-extra \
-        texlive-fonts-recommended texlive-lang-european 
-```  
-安装的时候记得选择 `apache2`
+        texlive-fonts-recommended texlive-lang-european
+```
+
+安装时选择 `apache2`
 
 ```shell
-sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev   
-sudo phpenmod json`
+sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev
+```
+
+```shell
+sudo phpenmod json
 ```
 
 #### 2. 编译domjudge
@@ -191,3 +195,5 @@ sudo ./judgedaemon -n 0
 
 ----
 ## 管理员方面。
+要先创建比赛，加入题目，加入队伍，加入用户，用户与队伍通过一个外健来对应，而你创建比赛后，比赛里面的题目可以通过调用来处理，
+这里我还不是很清楚，然后队伍的批量导入是需要一定的格式的。
