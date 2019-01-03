@@ -347,7 +347,7 @@
 <li>规定转发规则，在虚拟服务器里，去弄一下转发端口。你配的是什么端口，就开哪个端口。</li>
 <li>调设置，让外网访问。搞完前面，你会发现外网还是访问不了。我之前就卡了好久，网上也不说清楚，你在dmz主机设置里面，把你要给外网看的IP加上，不过我这边不知道为什么，只能开一个。</li>
 </ol>
-<p>然后就结束了。其中虚拟服务器，那个外部端口内部端口是这样说的，我认为：你外网通过哪个端口访问到你的ip，你的路由器自动转化成，内网的哪台主机的哪个端口，比如外部8888内部22，你在外网就通过连接这个端口来处理。</p>
+<p>然后就结束了。其中虚拟服务器，那个外部端口内部端口是这样说的，我认为：你外网通过哪个端口访问到你的ip，你的路由器自动转化成，内网的哪台主机的哪个端口，比如外部8888内部22，你在外网就通过连接8888这个端口来处理。</p>
 </blockquote>
 
           
@@ -482,9 +482,9 @@
 <p>安装时选择 <code>apache2</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libcurl4-gnutls-dev libjsoncpp-dev libmagic-dev</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo phpenmod json</span><br></pre></td></tr></table></figure>
-<h4 id="2-编译domjudge"><a href="#2-编译domjudge" class="headerlink" title="2. 编译domjudge"></a>2. 编译domjudge</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd Downloads   </span><br><span class="line">wget https://www.domjudge.org/releases/domjudge-6.0.3.tar.gz      </span><br><span class="line">tar -zxvf domjudge-6.0.2.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="2-编译domjudge"><a href="#2-编译domjudge" class="headerlink" title="2. 编译domjudge"></a>2. 编译domjudge</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd Downloads   </span><br><span class="line">wget https://www.domjudge.org/releases/domjudge-6.0.3.tar.gz      </span><br><span class="line">tar -zxvf domjudge-6.0.3.tar.gz</span><br></pre></td></tr></table></figure>
 <p>这里也可以通过上<a href="https://www.domjudge.org" target="_blank" rel="noopener">官网</a>进行下载，下载和解压的地址，要记住。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd domjudge-6.0.2</span><br><span class="line">./configure --prefix=$HOME/domjudge --with-baseurl=127.0.0.1</span><br><span class="line">make domserver &amp;&amp; sudo make install-domserver</span><br><span class="line">make judgehost &amp;&amp; sudo make install-judgehost</span><br><span class="line">make docs &amp;&amp; sudo make install-docs</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd domjudge-6.0.3</span><br><span class="line">./configure --prefix=$HOME/domjudge --with-baseurl=127.0.0.1</span><br><span class="line">make domserver &amp;&amp; sudo make install-domserver</span><br><span class="line">make judgehost &amp;&amp; sudo make install-judgehost</span><br><span class="line">make docs &amp;&amp; sudo make install-docs</span><br></pre></td></tr></table></figure>
 <p>那个127.0.0.1表示的是你的默认端口，后面两句分别是安装服务端和判题端。</p>
 <hr>
 <h3 id="domjudge服务端"><a href="#domjudge服务端" class="headerlink" title="domjudge服务端"></a>domjudge服务端</h3><h4 id="1-配置数据库"><a href="#1-配置数据库" class="headerlink" title="1. 配置数据库"></a>1. 配置数据库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/domjudge/domserver</span><br><span class="line">sudo bin/dj_setup_database -u root install</span><br></pre></td></tr></table></figure>
