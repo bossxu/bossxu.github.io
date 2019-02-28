@@ -49,12 +49,12 @@ sudo phpenmod json
 ```shell
 cd Downloads   
 wget https://www.domjudge.org/releases/domjudge-6.0.3.tar.gz      
-tar -zxvf domjudge-6.0.2.tar.gz   
+tar -zxvf domjudge-6.0.3.tar.gz   
 ```
 这里也可以通过上[官网](https://www.domjudge.org)进行下载，下载和解压的地址，要记住。
 
 ```shell
-cd domjudge-6.0.2
+cd domjudge-6.0.3
 ./configure --prefix=$HOME/domjudge --with-baseurl=127.0.0.1
 make domserver && sudo make install-domserver
 make judgehost && sudo make install-judgehost
