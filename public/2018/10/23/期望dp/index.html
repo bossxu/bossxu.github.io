@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ACM,dp,期望," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="期望dp    这个知识点，说来也可笑，作为一个dp，数学类型的选手，到现在才开始接触这个点，也是没谁了。最近做了几题，现在说下我个人对这个知识点的一些理解吧。  题外话   讲道理最近基本没怎么碰到过这个知识点。最近会碰到期望，概率啥的问题，但是很多都不是套路，拼的就是你能否想到。像多校赛中很多的问题，就不是套路能处理的。我也是无意中看到这个知识点，然后就刷了点水题，知道了一些处理的方法。">
+<meta name="keywords" content="ACM,dp,期望">
+<meta property="og:type" content="article">
+<meta property="og:title" content="期望dp">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/期望dp/index.html">
 <meta property="og:site_name" content="langman&#39;s blog">
+<meta property="og:description" content="期望dp    这个知识点，说来也可笑，作为一个dp，数学类型的选手，到现在才开始接触这个点，也是没谁了。最近做了几题，现在说下我个人对这个知识点的一些理解吧。  题外话   讲道理最近基本没怎么碰到过这个知识点。最近会碰到期望，概率啥的问题，但是很多都不是套路，拼的就是你能否想到。像多校赛中很多的问题，就不是套路能处理的。我也是无意中看到这个知识点，然后就刷了点水题，知道了一些处理的方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-10-23T08:15:15.238Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
+<meta name="twitter:title" content="期望dp">
+<meta name="twitter:description" content="期望dp    这个知识点，说来也可笑，作为一个dp，数学类型的选手，到现在才开始接触这个点，也是没谁了。最近做了几题，现在说下我个人对这个知识点的一些理解吧。  题外话   讲道理最近基本没怎么碰到过这个知识点。最近会碰到期望，概率啥的问题，但是很多都不是套路，拼的就是你能否想到。像多校赛中很多的问题，就不是套路能处理的。我也是无意中看到这个知识点，然后就刷了点水题，知道了一些处理的方法。">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/23/期望dp/"/>
 
 
 
 
 
-  <title>标签 | langman's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>期望dp | langman's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -247,40 +251,183 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/期望dp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 12 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/ACM/" style="font-size: 30px; color: #111">ACM</a> <a href="/tags/dp/" style="font-size: 24px; color: #4f4f4f">dp</a> <a href="/tags/java/" style="font-size: 12px; color: #ccc">java</a> <a href="/tags/oj/" style="font-size: 12px; color: #ccc">oj</a> <a href="/tags/博弈/" style="font-size: 12px; color: #ccc">博弈</a> <a href="/tags/数论/" style="font-size: 12px; color: #ccc">数论</a> <a href="/tags/服务器/" style="font-size: 12px; color: #ccc">服务器</a> <a href="/tags/期望/" style="font-size: 18px; color: #8e8e8e">期望</a> <a href="/tags/概率/" style="font-size: 12px; color: #ccc">概率</a> <a href="/tags/玩/" style="font-size: 12px; color: #ccc">玩</a> <a href="/tags/笔记/" style="font-size: 12px; color: #ccc">笔记</a> <a href="/tags/莫比乌斯/" style="font-size: 12px; color: #ccc">莫比乌斯</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">期望dp</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T16:15:15+08:00">
+                2018-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="期望dp"><a class="markdownIt-Anchor" href="#期望dp"></a> 期望dp</h2>
+<p>   这个知识点，说来也可笑，作为一个dp，数学类型的选手，到现在才开始接触这个点，也是没谁了。最近做了几题，现在说下我个人对这个知识点的一些理解吧。</p>
+<h4 id="题外话"><a class="markdownIt-Anchor" href="#题外话"></a> 题外话</h4>
+<blockquote>
+<p> 讲道理最近基本没怎么碰到过这个知识点。最近会碰到期望，概率啥的问题，但是很多都不是套路，拼的就是你能否想到。像多校赛中很多的问题，就不是套路能处理的。我也是无意中看到这个知识点，然后就刷了点水题，知道了一些处理的方法。</p>
+</blockquote>
+<h4 id="一些重要的点"><a class="markdownIt-Anchor" href="#一些重要的点"></a> 一些重要的点</h4>
+<ol>
+<li>首先我们要确定方向</li>
+</ol>
+<blockquote>
+<p> 我们之前写一些关于期望的概率的题的时候一般都是从左向右走，期望dp则是一般都是从屁股后面向前走。具体原因其实很大部分是和我们的dp定义密切相关。</p>
+</blockquote>
+<ol start="2">
+<li>确定dp表达式的含义</li>
+</ol>
+<blockquote>
+<p> dp写多了，很多情况写都是这样定义的，就是dp[i][j] 表示从基本到i，j这种情况所需要的消耗。在期望dp中一般是这样定义，比如说拿n个球，dp[i]表示已经拿了i个球，距离一共拿n个球，所要的期望。所以这里其实我们已经解释了为什么dp要从后往前走。</p>
+</blockquote>
+<ol start="3">
+<li>dp公式的推导</li>
+</ol>
+<blockquote>
+<p> 前面两个点，其实是期望dp的套路而已。后面真正难的点其实在于dp方程的确定，已经dp之间的推导.<br>
+ 这个就不好说什么东西了，很多的公式推导其实主要还是要通过做题去提升你的一些感觉。dp嘛，有点随缘的。<br>
+ 还有一点就是，有的时候这个dp不是线性递推，成了一个环，这个时候就需要用高斯消元去处理这个问题。</p>
+</blockquote>
+<h4 id="范围的题"><a class="markdownIt-Anchor" href="#范围的题"></a> 范围的题</h4>
+<blockquote>
+<p>题我也是看网上别人的博客，然后加在一起的。<br>
+hdu4405,poj2096,hdu3853,zoj3329,hdu2262,poj3744,poj3071,poj2151,zoj3380.</p>
+</blockquote>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ACM/" rel="tag"># ACM</a>
+          
+            <a href="/tags/dp/" rel="tag"># dp</a>
+          
+            <a href="/tags/期望/" rel="tag"># 期望</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/23/莫比乌斯思路/" rel="next" title="莫比乌斯思想">
+                <i class="fa fa-chevron-left"></i> 莫比乌斯思想
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/23/博弈/" rel="prev" title="博弈论[之前看博弈的一些理解]">
+                博弈论[之前看博弈的一些理解] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -289,6 +436,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -309,8 +460,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -403,6 +563,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#期望dp"><span class="nav-number">1.</span> <span class="nav-text"> 期望dp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 题外话</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些重要的点"><span class="nav-number">1.0.2.</span> <span class="nav-text"> 一些重要的点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范围的题"><span class="nav-number">1.0.3.</span> <span class="nav-text"> 范围的题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
