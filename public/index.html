@@ -259,6 +259,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/hexo博客如何配置到服务器上/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/hexo博客如何配置到服务器上/" itemprop="url">hexo博客如何配置到服务器上</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T20:31:27+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="把博客放到自己得服务器上"><a class="markdownIt-Anchor" href="#把博客放到自己得服务器上"></a> 把博客放到自己得服务器上</h2>
+<blockquote>
+<p>最近搞了个服务器，其实在寒假就搞了一个腾讯云，但是啊，这个首付确实还挺便宜的，但是续费的时候要我1000块，这就很难受了。然后听别人说的就去搞了个阿里云。之前自己博客是买了个域名放在了github送的那个小服务器上，能用，但是感觉就有点奇怪。</p>
+</blockquote>
+<h3 id="首先啊"><a class="markdownIt-Anchor" href="#首先啊"></a> 首先啊</h3>
+<blockquote>
+<p>我是从hexo+github起步的。首先你得知道hexo如何在本地搭建那个博客得。网上其实有很多得教程，但是啊，感觉还是挺奇怪得，很多说得不是很详细，很多到底是本地操作还是服务器端得呢。其实搞清楚后，东西也不是很多。总结来说，一个是服务器上，你要做个git仓库，然后安装下web服务器，然后就没了，在本地，你要做得就是改下你的那个hexo得部署，之前你是放在github得那个地方，现在就是放在本地就完事了。</p>
+</blockquote>
+<h3 id="服务器上的操作"><a class="markdownIt-Anchor" href="#服务器上的操作"></a> 服务器上的操作</h3>
+<h4 id="hexo有关"><a class="markdownIt-Anchor" href="#hexo有关"></a> hexo有关</h4>
+<blockquote>
+<p>我们之前把hexo的博客放在那个github的服务器上，我们其实什么插件都不用装，把文件直接push到服务器上就可以了，再加一个CANME就好了，这说明啥，这说明我们的那个网站，其实就是个静态的网页，打开的那种。<strong>唉，说到这里其实我就有一个问题了，我们的博客在hexo g静态文件生成的时候，是有静态文件的，里面有一个index.html你要是直接打开，你会发现gg 思密达，但是你要放在web服务器上就能渲染的很好。倒是打破了我对web服务器的理解</strong>然后任务就很明显，把hexo的静态文件放到服务器上的web服务器上就完事了。</p>
+</blockquote>
+<h4 id="git用户"><a class="markdownIt-Anchor" href="#git用户"></a> git用户</h4>
+<blockquote>
+<p>这个用户，我在一开始是觉得奇怪的。没啥用的啊，搞个git的插件就行了。实际上，确实是这样，没啥用，唯一的用处在于那个，我们把博客推送到github服务器上，不是不用密码吗，是因为我们直接给了ssh的权限，这个的用处好像也就在这里了，对这个用户，我们可以放大点权限，让我们博客直接送过去，不然就会有权限限制。很多博客都是这样说的，那我就这样做了。具体的做法就是</p>
+</blockquote>
+<ul>
+<li>创建用户</li>
+<li>给权限[这个挺重要的，注意下]</li>
+<li>建立ssh的信任问题</li>
+<li>创建一个仓库</li>
+</ul>
+<h4 id="web服务器"><a class="markdownIt-Anchor" href="#web服务器"></a> web服务器</h4>
+<blockquote>
+<p>这个干啥的呢，自己百度把。我用的是apache服务器，然后这个服务器需要做啥呢</p>
+</blockquote>
+<ul>
+<li>改默认访问网页</li>
+<li>建立一个/var/www/hexo的文件，把默认网页访问改成这个。记得把这个文件的权限改成git可以动的。</li>
+<li>在那个git用户下面，对那个空仓库，做一个钩子，这个你要注意把那个钩子做成<strong>可执行文件</strong>，干啥呢，就是把你的那个仓库放到/var/www/hexo里面去</li>
+</ul>
+<h3 id="本地操作"><a class="markdownIt-Anchor" href="#本地操作"></a> 本地操作</h3>
+<blockquote>
+<p>改下那个_config.yml里面的那个部署的地址就好了</p>
+</blockquote>
+<h3 id="阿里云操作"><a class="markdownIt-Anchor" href="#阿里云操作"></a> 阿里云操作</h3>
+<blockquote>
+<p>你要去开下那个80端口。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/java学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -441,7 +600,32 @@
 <li>static 修饰符，用来修饰类方法和类变量。</li>
 <li>final 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。</li>
 <li>abstract 修饰符，用来创建抽象类和抽象方法。</li>
-<li>synchronized 和 volatile 修饰符，主要用于线程的编程。</li>
+<li>synchronized 和 volatile 修饰符，主要用于线程的编程。[这个我还没有去用到过,嘤嘤嘤]</li>
+</ul>
+<h3 id="java正则表达式"><a class="markdownIt-Anchor" href="#java正则表达式"></a> java正则表达式</h3>
+<p>这个听说过，在c++里面一直都是手动实现,难受，有一次要我们去做爬虫倒是了解过一点点。还有xpath这个玩意。这个东西怎么说呢，学会查文档估计就差不多了。<br>
+<a href="http://www.runoob.com/java/java-regular-expressions.html" target="_blank" rel="noopener">基础教程</a></p>
+<h3 id="方法的命名规则"><a class="markdownIt-Anchor" href="#方法的命名规则"></a> 方法的命名规则</h3>
+<ul>
+<li>方法的名字的第一个单词应以小写字母作为开头，后面的单词则用大写字母开头写，不使用连接符。例如：addPerson。</li>
+<li>下划线可能出现在 JUnit 测试方法名称中用以分隔名称的逻辑组件。一个典型的模式是：<code>test&lt;MethodUnderTest&gt;_&lt;state&gt;</code>，例如 <code>testPop_emptyStack</code>。</li>
+</ul>
+<p>想我之前写的那个c++函数都是瞎写，变量的命名都是那啥csl 啊，shu啊，mwh啊…<br>
+之前写了项目里面的一个函数，就是接触到了一个叫驼峰命名法，用的是小驼峰命名。用之前的写法，好像确实是挺丢面的啊。既然确定要去搞项目了，还是规范点。看那些大佬写的代码，真的挺好看的，自己写的代码确实奇奇怪怪。</p>
+<p>方法的定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数类型 参数名)&#123;</span><br><span class="line">    ...</span><br><span class="line">    方法体</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> 返回值;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="static"><a class="markdownIt-Anchor" href="#static"></a> static</h3>
+<p>这个我一直觉得挺奇怪的，c++里面好像没有用到过，这个我就了解一下。</p>
+<p>在《java编程思想里面》介绍是</p>
+<blockquote>
+<p>static方法就是没有this的方法。在static方法内部不能调用非静态方法，反过来是可以的。而且可以在没有创建任何对象的前提下，仅仅通过类本身来调用static方法。这实际上正是static方法的主要用途。</p>
+</blockquote>
+<p>看别人的介绍就是</p>
+<blockquote>
+<p>方便在<strong>没有创建对象</strong>的情况下来进行调用（方法/变量）</p>
+</blockquote>
+<ul>
+<li>用在方法和变量上面就是调用问题，感觉好像就是那个c++的全局变量问题。</li>
 </ul>
 
           
@@ -1027,751 +1211,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/博弈/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/博弈/" itemprop="url">博弈论[之前看博弈的一些理解]</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T16:15:15+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="博弈方面的一些看法"><a class="markdownIt-Anchor" href="#博弈方面的一些看法"></a> 博弈方面的一些看法</h1>
-<blockquote>
-<p>博弈这个玩意是真的烦，会的时候是弱智题不会的时候他妈天方夜谭。</p>
-</blockquote>
-<p>说下个人的看法以及各种题型</p>
-<h2 id="主要的解题思想"><a class="markdownIt-Anchor" href="#主要的解题思想"></a> 主要的解题思想</h2>
-<p>官方说的是通过必败点和必胜点来判定<br>
-先通过必败点来推，直接来看必胜点，把问题抽象成图 把状态抽象成点，必败点就是先手必败点，然后通过必败点能走到的搞成必胜点，如过有一个状态没有走过 而且他后面的路都是必胜点那么他就是必败点。感觉就像dp一样，记忆化搜索。<br>
-当然题目不可能出的那么简单的。<br>
-不过根据雄爷定理，万事不离期宗，掌握基本，扩展自己去发掘。</p>
-<h2 id="主要的题型"><a class="markdownIt-Anchor" href="#主要的题型"></a> 主要的题型</h2>
-<h4 id="巴什博弈"><a class="markdownIt-Anchor" href="#巴什博弈"></a> 巴什博弈</h4>
-<p>这个是最简单的博弈，就是一堆东西，每个人自己能拿1-n件，谁最后一个拿完谁赢，这个是最简单的，不记录。</p>
-<h4 id="威佐夫博弈"><a class="markdownIt-Anchor" href="#威佐夫博弈"></a> 威佐夫博弈</h4>
-<p>有两堆各若干个物品，两个人轮流从某一堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
-这个的解题思路在于通过前面的那个np问题来解决，用局势来思考这些问题，前几个局势在于(0,0),(1,2),(3,5),(4,7)…然后一些大佬就总结出了一些牛逼的结论( ak,bk),<code>ak=k*(spat(5)+1)/2 , bk = ak+k</code>人才。</p>
-<h4 id="fibonacci博弈"><a class="markdownIt-Anchor" href="#fibonacci博弈"></a> Fibonacci博弈</h4>
-<p>有一堆个数为n的石子，游戏双方轮流取石子，满足：</p>
-<ol>
-<li>先手不能在第一次把所有的石子取完；</li>
-<li>之后每次可以取的石子数介于1到对手刚取的石子数的2倍之间（包含1和对手刚取的石子数的2倍）。 约定取走最后一个石子的人为赢家。</li>
-</ol>
-<blockquote>
-<p>这个的解决办法涉及到齐肯多夫定理不去了解。没办法本人太笨</p>
-</blockquote>
-<p>结论是 <code>当n为Fibonacci数时，先手必败</code></p>
-<h4 id="尼姆博弈"><a class="markdownIt-Anchor" href="#尼姆博弈"></a> 尼姆博弈</h4>
-<p>有三堆各若干个物品，两个人轮流从某一堆取任意多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
-这个博弈有点意思 他的<code>必败点的局势在于(a,b,c) a^b^c = 0</code></p>
-<blockquote>
-<p>不过不换怎么说，注意他们的游戏方式 这只是最基础的几种博弈，方法都是通过前面的那个基础来进行扩展的</p>
-</blockquote>
-<h4 id="sg函数"><a class="markdownIt-Anchor" href="#sg函数"></a> SG函数</h4>
-<p>这个在看之前感觉很高级但是啊，好像也就是一个dp的过程，通过一个必败点，看成起点然后，那个方法看成通向下一个起点的路，然后找所有能直接到这个必败点的必胜点。好像也就那么回事。好像能解决的都是小数字题这是一个板子，f里面存的是方法，多堆问题可以转化成异或来解决。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getSG</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="built_in">memset</span>(SG,<span class="number">0</span>,<span class="keyword">sizeof</span>(SG));</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(S,<span class="number">0</span>,<span class="keyword">sizeof</span>(S));</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; f[j] &lt;= i &amp;&amp; j &lt;= N; j++)</span><br><span class="line">            S[SG[i-f[j]]] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>;;j++) <span class="keyword">if</span>(!S[j])&#123;</span><br><span class="line">            SG[i] = j;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解题的方法"><a class="markdownIt-Anchor" href="#解题的方法"></a> 解题的方法</h2>
-<ul>
-<li>1　：相信自己的第一感觉</li>
-<li>2　：博弈都会和一些特别的数搭边 ， 所以第一件事坑定是分析局势然后找找看是不是有特别的意义，像什么 卡特兰数，fib数列 ，幂次方，异或的值是否为0；</li>
-<li>3 : 不挂怎么说，记得打表。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/期望dp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/期望dp/" itemprop="url">期望dp</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T16:15:15+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="期望dp"><a class="markdownIt-Anchor" href="#期望dp"></a> 期望dp</h2>
-<p>   这个知识点，说来也可笑，作为一个dp，数学类型的选手，到现在才开始接触这个点，也是没谁了。最近做了几题，现在说下我个人对这个知识点的一些理解吧。</p>
-<h4 id="题外话"><a class="markdownIt-Anchor" href="#题外话"></a> 题外话</h4>
-<blockquote>
-<p> 讲道理最近基本没怎么碰到过这个知识点。最近会碰到期望，概率啥的问题，但是很多都不是套路，拼的就是你能否想到。像多校赛中很多的问题，就不是套路能处理的。我也是无意中看到这个知识点，然后就刷了点水题，知道了一些处理的方法。</p>
-</blockquote>
-<h4 id="一些重要的点"><a class="markdownIt-Anchor" href="#一些重要的点"></a> 一些重要的点</h4>
-<ol>
-<li>首先我们要确定方向</li>
-</ol>
-<blockquote>
-<p> 我们之前写一些关于期望的概率的题的时候一般都是从左向右走，期望dp则是一般都是从屁股后面向前走。具体原因其实很大部分是和我们的dp定义密切相关。</p>
-</blockquote>
-<ol start="2">
-<li>确定dp表达式的含义</li>
-</ol>
-<blockquote>
-<p> dp写多了，很多情况写都是这样定义的，就是dp[i][j] 表示从基本到i，j这种情况所需要的消耗。在期望dp中一般是这样定义，比如说拿n个球，dp[i]表示已经拿了i个球，距离一共拿n个球，所要的期望。所以这里其实我们已经解释了为什么dp要从后往前走。</p>
-</blockquote>
-<ol start="3">
-<li>dp公式的推导</li>
-</ol>
-<blockquote>
-<p> 前面两个点，其实是期望dp的套路而已。后面真正难的点其实在于dp方程的确定，已经dp之间的推导.<br>
- 这个就不好说什么东西了，很多的公式推导其实主要还是要通过做题去提升你的一些感觉。dp嘛，有点随缘的。<br>
- 还有一点就是，有的时候这个dp不是线性递推，成了一个环，这个时候就需要用高斯消元去处理这个问题。</p>
-</blockquote>
-<h4 id="范围的题"><a class="markdownIt-Anchor" href="#范围的题"></a> 范围的题</h4>
-<blockquote>
-<p>题我也是看网上别人的博客，然后加在一起的。<br>
-hdu4405,poj2096,hdu3853,zoj3329,hdu2262,poj3744,poj3071,poj2151,zoj3380.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/莫比乌斯思路/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/莫比乌斯思路/" itemprop="url">莫比乌斯思想</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T16:15:15+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="莫比乌斯的一些想法"><a class="markdownIt-Anchor" href="#莫比乌斯的一些想法"></a> 莫比乌斯的一些想法</h3>
-<h4 id="首先你要知道莫比乌斯是什么"><a class="markdownIt-Anchor" href="#首先你要知道莫比乌斯是什么"></a> 首先你要知道莫比乌斯是什么</h4>
-<blockquote>
-<p> 这个在前期的时候，他是一种知识点，到后期，它就是一种思想，一种工具。说到底他就是一种容斥的操作</p>
-</blockquote>
-<h4 id="现在主流的莫比乌斯有两种"><a class="markdownIt-Anchor" href="#现在主流的莫比乌斯有两种"></a> 现在主流的莫比乌斯有两种</h4>
-<ol>
-<li>第一种<br>
-$ F_n = \sum_{d|n}^n f_d $<br>
-$ f_n = \sum_{d|n}^n u_d*F_{\frac{n}{d}} $</li>
-<li>第二种<br>
-$F_n = \sum_{n|d}f_d $<br>
-$f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d $</li>
-</ol>
-<blockquote>
-<p> 具体的公式推导，一种常见的是你通过举一些例子推出这个公式，还有就是通过狄利克雷卷去证明这个式子，我比较菜，就不献丑了.你可以去百度看下，我的博客也不会特别去处理这些东西，能力不够，我现在对很多东西也都是会用，原理什么的不敢恭维。我写的更多在于我自己对于这些东西的思考。我是通过那些方面去思考的。</p>
-</blockquote>
-<h4 id="怎么用"><a class="markdownIt-Anchor" href="#怎么用"></a> 怎么用</h4>
-<p> 其实上面的公式也说明了,这个 $ u_i $ 莫比乌斯函数是一定的，那我们只需要去构造 $ f_n , F_n $ 就ok了，当然了，难点也就在于这个构造的方法。<br>
- 不过我们这里的公式已经给你了，你去思考怎么凑便会简单一点，还有就是我们这样干的目的最终是为了容斥，这样想就会稍微简单一点吧。</p>
-<h4 id="模板"><a class="markdownIt-Anchor" href="#模板"></a> 模板</h4>
-<p>  放一份莫比乌斯的板子，哎呀妈呀数学真的太强大了。其实线性筛真的强大，他能处理所有的积性函数真的秀</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">bool</span> check[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> mu[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Moblus</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    clr(check,<span class="number">0</span>);</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= MAXN; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( !check[i] )</span><br><span class="line">        &#123;</span><br><span class="line">            prime[tot++] = i;</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i * prime[j] &gt; MAXN) <span class="keyword">break</span>;</span><br><span class="line">            check[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>( i % prime[j] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/dp常见模板/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/dp常见模板/" itemprop="url">dp 常见模板</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T16:15:15+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="最大上升子序列"><a class="markdownIt-Anchor" href="#最大上升子序列"></a> 最大上升子序列</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LIS(LDS)</span><br><span class="line">template&lt;class Cmp&gt;  </span><br><span class="line">int LIS (Cmp cmp)(nlogn)  </span><br><span class="line">&#123;  </span><br><span class="line">    static int m, end[N];  </span><br><span class="line">    m = 0;  </span><br><span class="line">    for (int i=0;i&lt;n;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        int pos = lower_bound(end, end+m, a[i], cmp)-end;  </span><br><span class="line">        end[pos] = a[i], m += pos==m;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return m;  </span><br><span class="line">&#125;  </span><br><span class="line">    cout &lt;&lt; LIS(less&lt;int&gt;()) &lt;&lt; endl;         //严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(less_equal&lt;int&gt;()) &lt;&lt; endl;   //非严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(greater&lt;int&gt;()) &lt;&lt; endl;      //严格下降  </span><br><span class="line">    cout &lt;&lt; LIS(greater_equal&lt;int&gt;()) &lt;&lt; endl;//非严格下降</span><br></pre></td></tr></table></figure>
-<h3 id="最大公共子序列"><a class="markdownIt-Anchor" href="#最大公共子序列"></a> 最大公共子序列</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">留个递推公式,差不多的意思(n^2)</span><br><span class="line"></span><br><span class="line">   dp[i][j]=dp[i-1][j-1]+1;</span><br><span class="line">   dp[i][j]=max(dp[i-1][j],dp[i][j-1]);</span><br><span class="line">   dp[0][0]=0;</span><br></pre></td></tr></table></figure>
-<h3 id="前向星造图法"><a class="markdownIt-Anchor" href="#前向星造图法"></a> 前向星造图法</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span>&#123;</span>          <span class="comment">//图的单位,边的结构体</span></span><br><span class="line">  <span class="keyword">int</span> to;             <span class="comment">//儿子</span></span><br><span class="line">  <span class="keyword">int</span> next;           <span class="comment">//同父的下一个结点</span></span><br><span class="line">  <span class="keyword">int</span> w;              <span class="comment">//权</span></span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span> <span class="comment">//加边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  edge[tot].to = v;</span><br><span class="line">  edge[tot].w = w;</span><br><span class="line">  edge[tot].next = head[u];</span><br><span class="line">  head[u] = tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(u,v)</span><span class="comment">//遍历的规则,单边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i =head[u];i!=<span class="number">-1</span>;i = edge[i].next)</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">     <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">     伪代码区</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span><span class="comment">//双边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u];i!=<span class="number">-1</span>;i=edge[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">int</span> v = edge[i].next;</span><br><span class="line">      <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">      <span class="keyword">if</span>(v != father)</span><br><span class="line">      &#123;</span><br><span class="line">        伪代码</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="什么是开挂"><a class="markdownIt-Anchor" href="#什么是开挂"></a> 什么是开挂</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">poj <span class="number">3107</span> 不开 <span class="number">500</span>ms</span><br><span class="line">         开了 <span class="number">188</span>ms</span><br><span class="line">         类型应该是何前面的(<span class="keyword">int</span>) 相对应</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//加快输入输出</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> k=<span class="number">0</span>;<span class="keyword">char</span> ls;ls=getchar();<span class="keyword">for</span>(;ls&lt;<span class="string">'0'</span>||ls&gt;<span class="string">'9'</span>;k=ls,ls=getchar());</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">for</span>(;ls&gt;=<span class="string">'0'</span>&amp;&amp;ls&lt;=<span class="string">'9'</span>;ls=getchar())x=x*<span class="number">10</span>+ls-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="string">'-'</span>)x=<span class="number">0</span>-x;<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="状态压缩里面常用的一些东西"><a class="markdownIt-Anchor" href="#状态压缩里面常用的一些东西"></a> 状态压缩里面常用的一些东西</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1 获得当前行的数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getnum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    x &amp;= x<span class="number">-1</span>;</span><br><span class="line">    ret++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2 看当前行左右是不是满足题设</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x &amp; x&lt;&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 看是不是可以满足条件,和题目给的图一样,是可以放的,并且和上一个是不是会冲突</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">suit</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x&amp;y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="数位dp"><a class="markdownIt-Anchor" href="#数位dp"></a> 数位dp</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 把各个数位上的数字存进去</span></span><br><span class="line">ll dfs(int len(数位),....(中间各个东西的转化),flag(是否在最高位,要限制))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span>(len&lt;<span class="number">0</span>) <span class="keyword">return</span> ..;</span><br><span class="line">  <span class="keyword">if</span>(!flag &amp;&amp; ~dp[len][...]) <span class="keyword">return</span> dp[len][...];</span><br><span class="line">  ll ans= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> Max = flag?shu[len]:<span class="number">9</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=Max;i++)</span><br><span class="line">   &#123;</span><br><span class="line">     ans += dfs(len<span class="number">-1</span>,...,flag&amp;&amp;i==Max);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(!flag) dp[len][...] = ans;</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">slove</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> co = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    shu[co] = x%<span class="number">10</span>;</span><br><span class="line">    x/=<span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dfs(co<span class="number">-1</span>,...,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">这是主要的一个套路;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/dp常见思路/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/dp常见思路/" itemprop="url">dp常见思路</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T16:15:15+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="dp的定义"><a class="markdownIt-Anchor" href="#dp的定义"></a> dp的定义</h2>
-<p>dp ，就是记忆化搜索，<br>
-精髓在于他的 记忆化，<br>
-相当于 把大问题转化成子问题<br>
-然后找出问题之间的关系，从子状态 转移到 其他的状态。</p>
-<h2 id="背包方面"><a class="markdownIt-Anchor" href="#背包方面"></a> 背包方面</h2>
-<p>他的状态点在于<br>
-当背包容量为x时，他的最佳状态<br>
-然后找出容量是x的时候能从<br>
-哪几个子状态转移过来。<br>
-难点在于：<br>
-1：背包的构造<br>
-2：背包状态转移方程的寻找<br>
-3：方向是从前到后，还是从后到前<br>
-4：dp维数的确定</p>
-<h2 id="树形dp"><a class="markdownIt-Anchor" href="#树形dp"></a> 树形dp</h2>
-<p>在树上做dp<br>
-那么状态的关系很好找，<br>
-树上的一个结点他们的关系，只有，父亲结点，子结点，兄弟结点;<br>
-所以关键在于找出父子结点的一些关系;<br>
-套路基本就是两遍dfs<br>
-而且兄弟结点用的不多，基本只是父子关系</p>
-<h2 id="状压dp"><a class="markdownIt-Anchor" href="#状压dp"></a> 状压dp</h2>
-<p>首先，你得知道哪些可以压缩<br>
-大多数可以压缩的在于<br>
-1：他的数量很少<br>
-2：他的状态很少，一般是 开 或 闭，两个状态的多<br>
-用到了很多的位运算，他不像背包。<br>
-他是从子结点推出父结点<br>
-基本就是些套路，dp<br>
-关键还是在于状态转移方程的寻找。</p>
-<h2 id="数位dp"><a class="markdownIt-Anchor" href="#数位dp"></a> 数位dp</h2>
-<p>我觉得难点在于两个<br>
-1 状态转移方程的寻找<br>
-2 状态转移的状态点比较难找到<br>
-首先我要知道他的记忆化出现在那个方面<br>
-我在之前的一些操作有可能出现相同的结果<br>
-这时候就体现出记忆化的用处<br>
-而且我要知道通过怎么样的状态我可以确定不重复.<br>
-状态转移的时候也需要注意<br>
-从后一位和前一位的关系来寻找转移方程<br>
-而且有时候还是一个状态到另一个状态来写,不是简单的数位间的关系求解.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/期望概率常见题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1961,9 +1400,597 @@ dp[i] = p*dp[i-1] + (1-p)*dp[i-2];对于不是地雷的可以这样算。<br>
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/期望dp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/15/期望dp/" itemprop="url">期望dp</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T11:21:55+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="期望dp"><a class="markdownIt-Anchor" href="#期望dp"></a> 期望dp</h2>
+<p>   这个知识点，说来也可笑，作为一个dp，数学类型的选手，到现在才开始接触这个点，也是没谁了。最近做了几题，现在说下我个人对这个知识点的一些理解吧。</p>
+<h4 id="题外话"><a class="markdownIt-Anchor" href="#题外话"></a> 题外话</h4>
+<blockquote>
+<p> 讲道理最近基本没怎么碰到过这个知识点。最近会碰到期望，概率啥的问题，但是很多都不是套路，拼的就是你能否想到。像多校赛中很多的问题，就不是套路能处理的。我也是无意中看到这个知识点，然后就刷了点水题，知道了一些处理的方法。</p>
+</blockquote>
+<h4 id="一些重要的点"><a class="markdownIt-Anchor" href="#一些重要的点"></a> 一些重要的点</h4>
+<ol>
+<li>首先我们要确定方向</li>
+</ol>
+<blockquote>
+<p> 我们之前写一些关于期望的概率的题的时候一般都是从左向右走，期望dp则是一般都是从屁股后面向前走。具体原因其实很大部分是和我们的dp定义密切相关。</p>
+</blockquote>
+<ol start="2">
+<li>确定dp表达式的含义</li>
+</ol>
+<blockquote>
+<p> dp写多了，很多情况写都是这样定义的，就是dp[i][j] 表示从基本到i，j这种情况所需要的消耗。在期望dp中一般是这样定义，比如说拿n个球，dp[i]表示已经拿了i个球，距离一共拿n个球，所要的期望。所以这里其实我们已经解释了为什么dp要从后往前走。</p>
+</blockquote>
+<ol start="3">
+<li>dp公式的推导</li>
+</ol>
+<blockquote>
+<p> 前面两个点，其实是期望dp的套路而已。后面真正难的点其实在于dp方程的确定，已经dp之间的推导.<br>
+ 这个就不好说什么东西了，很多的公式推导其实主要还是要通过做题去提升你的一些感觉。dp嘛，有点随缘的。<br>
+ 还有一点就是，有的时候这个dp不是线性递推，成了一个环，这个时候就需要用高斯消元去处理这个问题。</p>
+</blockquote>
+<h4 id="范围的题"><a class="markdownIt-Anchor" href="#范围的题"></a> 范围的题</h4>
+<blockquote>
+<p>题我也是看网上别人的博客，然后加在一起的。<br>
+hdu4405,poj2096,hdu3853,zoj3329,hdu2262,poj3744,poj3071,poj2151,zoj3380.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/莫比乌斯思路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/05/莫比乌斯思路/" itemprop="url">莫比乌斯思想</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T14:06:18+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="莫比乌斯的一些想法"><a class="markdownIt-Anchor" href="#莫比乌斯的一些想法"></a> 莫比乌斯的一些想法</h3>
+<h4 id="首先你要知道莫比乌斯是什么"><a class="markdownIt-Anchor" href="#首先你要知道莫比乌斯是什么"></a> 首先你要知道莫比乌斯是什么</h4>
+<blockquote>
+<p> 这个在前期的时候，他是一种知识点，到后期，它就是一种思想，一种工具。说到底他就是一种容斥的操作</p>
+</blockquote>
+<h4 id="现在主流的莫比乌斯有两种"><a class="markdownIt-Anchor" href="#现在主流的莫比乌斯有两种"></a> 现在主流的莫比乌斯有两种</h4>
+<ol>
+<li>第一种<br>
+$ F_n = \sum_{d|n}^n f_d $<br>
+$ f_n = \sum_{d|n}^n u_d*F_{\frac{n}{d}} $</li>
+<li>第二种<br>
+$F_n = \sum_{n|d}f_d $<br>
+$f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d $</li>
+</ol>
+<blockquote>
+<p> 具体的公式推导，一种常见的是你通过举一些例子推出这个公式，还有就是通过狄利克雷卷去证明这个式子，我比较菜，就不献丑了.你可以去百度看下，我的博客也不会特别去处理这些东西，能力不够，我现在对很多东西也都是会用，原理什么的不敢恭维。我写的更多在于我自己对于这些东西的思考。我是通过那些方面去思考的。</p>
+</blockquote>
+<h4 id="怎么用"><a class="markdownIt-Anchor" href="#怎么用"></a> 怎么用</h4>
+<p> 其实上面的公式也说明了,这个 $ u_i $ 莫比乌斯函数是一定的，那我们只需要去构造 $ f_n , F_n $ 就ok了，当然了，难点也就在于这个构造的方法。<br>
+ 不过我们这里的公式已经给你了，你去思考怎么凑便会简单一点，还有就是我们这样干的目的最终是为了容斥，这样想就会稍微简单一点吧。</p>
+<h4 id="模板"><a class="markdownIt-Anchor" href="#模板"></a> 模板</h4>
+<p>  放一份莫比乌斯的板子，哎呀妈呀数学真的太强大了。其实线性筛真的强大，他能处理所有的积性函数真的秀</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">bool</span> check[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> mu[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Moblus</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    clr(check,<span class="number">0</span>);</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= MAXN; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( !check[i] )</span><br><span class="line">        &#123;</span><br><span class="line">            prime[tot++] = i;</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i * prime[j] &gt; MAXN) <span class="keyword">break</span>;</span><br><span class="line">            check[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>( i % prime[j] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/博弈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/05/博弈/" itemprop="url">博弈论[之前看博弈的一些理解]</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T14:00:51+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="博弈方面的一些看法"><a class="markdownIt-Anchor" href="#博弈方面的一些看法"></a> 博弈方面的一些看法</h1>
+<blockquote>
+<p>博弈这个玩意是真的烦，会的时候是弱智题不会的时候他妈天方夜谭。</p>
+</blockquote>
+<p>说下个人的看法以及各种题型</p>
+<h2 id="主要的解题思想"><a class="markdownIt-Anchor" href="#主要的解题思想"></a> 主要的解题思想</h2>
+<p>官方说的是通过必败点和必胜点来判定<br>
+先通过必败点来推，直接来看必胜点，把问题抽象成图 把状态抽象成点，必败点就是先手必败点，然后通过必败点能走到的搞成必胜点，如过有一个状态没有走过 而且他后面的路都是必胜点那么他就是必败点。感觉就像dp一样，记忆化搜索。<br>
+当然题目不可能出的那么简单的。<br>
+不过根据雄爷定理，万事不离期宗，掌握基本，扩展自己去发掘。</p>
+<h2 id="主要的题型"><a class="markdownIt-Anchor" href="#主要的题型"></a> 主要的题型</h2>
+<h4 id="巴什博弈"><a class="markdownIt-Anchor" href="#巴什博弈"></a> 巴什博弈</h4>
+<p>这个是最简单的博弈，就是一堆东西，每个人自己能拿1-n件，谁最后一个拿完谁赢，这个是最简单的，不记录。</p>
+<h4 id="威佐夫博弈"><a class="markdownIt-Anchor" href="#威佐夫博弈"></a> 威佐夫博弈</h4>
+<p>有两堆各若干个物品，两个人轮流从某一堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
+这个的解题思路在于通过前面的那个np问题来解决，用局势来思考这些问题，前几个局势在于(0,0),(1,2),(3,5),(4,7)…然后一些大佬就总结出了一些牛逼的结论( ak,bk),<code>ak=k*(spat(5)+1)/2 , bk = ak+k</code>人才。</p>
+<h4 id="fibonacci博弈"><a class="markdownIt-Anchor" href="#fibonacci博弈"></a> Fibonacci博弈</h4>
+<p>有一堆个数为n的石子，游戏双方轮流取石子，满足：</p>
+<ol>
+<li>先手不能在第一次把所有的石子取完；</li>
+<li>之后每次可以取的石子数介于1到对手刚取的石子数的2倍之间（包含1和对手刚取的石子数的2倍）。 约定取走最后一个石子的人为赢家。</li>
+</ol>
+<blockquote>
+<p>这个的解决办法涉及到齐肯多夫定理不去了解。没办法本人太笨</p>
+</blockquote>
+<p>结论是 <code>当n为Fibonacci数时，先手必败</code></p>
+<h4 id="尼姆博弈"><a class="markdownIt-Anchor" href="#尼姆博弈"></a> 尼姆博弈</h4>
+<p>有三堆各若干个物品，两个人轮流从某一堆取任意多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
+这个博弈有点意思 他的<code>必败点的局势在于(a,b,c) a^b^c = 0</code></p>
+<blockquote>
+<p>不过不换怎么说，注意他们的游戏方式 这只是最基础的几种博弈，方法都是通过前面的那个基础来进行扩展的</p>
+</blockquote>
+<h4 id="sg函数"><a class="markdownIt-Anchor" href="#sg函数"></a> SG函数</h4>
+<p>这个在看之前感觉很高级但是啊，好像也就是一个dp的过程，通过一个必败点，看成起点然后，那个方法看成通向下一个起点的路，然后找所有能直接到这个必败点的必胜点。好像也就那么回事。好像能解决的都是小数字题这是一个板子，f里面存的是方法，多堆问题可以转化成异或来解决。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getSG</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="built_in">memset</span>(SG,<span class="number">0</span>,<span class="keyword">sizeof</span>(SG));</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(S,<span class="number">0</span>,<span class="keyword">sizeof</span>(S));</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; f[j] &lt;= i &amp;&amp; j &lt;= N; j++)</span><br><span class="line">            S[SG[i-f[j]]] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>;;j++) <span class="keyword">if</span>(!S[j])&#123;</span><br><span class="line">            SG[i] = j;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解题的方法"><a class="markdownIt-Anchor" href="#解题的方法"></a> 解题的方法</h2>
+<ul>
+<li>1　：相信自己的第一感觉</li>
+<li>2　：博弈都会和一些特别的数搭边 ， 所以第一件事坑定是分析局势然后找找看是不是有特别的意义，像什么 卡特兰数，fib数列 ，幂次方，异或的值是否为0；</li>
+<li>3 : 不挂怎么说，记得打表。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/dp常见模板/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/05/dp常见模板/" itemprop="url">dp 常见模板</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T02:33:12+08:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="最大上升子序列"><a class="markdownIt-Anchor" href="#最大上升子序列"></a> 最大上升子序列</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LIS(LDS)</span><br><span class="line">template&lt;class Cmp&gt;  </span><br><span class="line">int LIS (Cmp cmp)(nlogn)  </span><br><span class="line">&#123;  </span><br><span class="line">    static int m, end[N];  </span><br><span class="line">    m = 0;  </span><br><span class="line">    for (int i=0;i&lt;n;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        int pos = lower_bound(end, end+m, a[i], cmp)-end;  </span><br><span class="line">        end[pos] = a[i], m += pos==m;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return m;  </span><br><span class="line">&#125;  </span><br><span class="line">    cout &lt;&lt; LIS(less&lt;int&gt;()) &lt;&lt; endl;         //严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(less_equal&lt;int&gt;()) &lt;&lt; endl;   //非严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(greater&lt;int&gt;()) &lt;&lt; endl;      //严格下降  </span><br><span class="line">    cout &lt;&lt; LIS(greater_equal&lt;int&gt;()) &lt;&lt; endl;//非严格下降</span><br></pre></td></tr></table></figure>
+<h3 id="最大公共子序列"><a class="markdownIt-Anchor" href="#最大公共子序列"></a> 最大公共子序列</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">留个递推公式,差不多的意思(n^2)</span><br><span class="line"></span><br><span class="line">   dp[i][j]=dp[i-1][j-1]+1;</span><br><span class="line">   dp[i][j]=max(dp[i-1][j],dp[i][j-1]);</span><br><span class="line">   dp[0][0]=0;</span><br></pre></td></tr></table></figure>
+<h3 id="前向星造图法"><a class="markdownIt-Anchor" href="#前向星造图法"></a> 前向星造图法</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span>&#123;</span>          <span class="comment">//图的单位,边的结构体</span></span><br><span class="line">  <span class="keyword">int</span> to;             <span class="comment">//儿子</span></span><br><span class="line">  <span class="keyword">int</span> next;           <span class="comment">//同父的下一个结点</span></span><br><span class="line">  <span class="keyword">int</span> w;              <span class="comment">//权</span></span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span> <span class="comment">//加边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  edge[tot].to = v;</span><br><span class="line">  edge[tot].w = w;</span><br><span class="line">  edge[tot].next = head[u];</span><br><span class="line">  head[u] = tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(u,v)</span><span class="comment">//遍历的规则,单边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i =head[u];i!=<span class="number">-1</span>;i = edge[i].next)</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">     <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">     伪代码区</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span><span class="comment">//双边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u];i!=<span class="number">-1</span>;i=edge[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">int</span> v = edge[i].next;</span><br><span class="line">      <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">      <span class="keyword">if</span>(v != father)</span><br><span class="line">      &#123;</span><br><span class="line">        伪代码</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="什么是开挂"><a class="markdownIt-Anchor" href="#什么是开挂"></a> 什么是开挂</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">poj <span class="number">3107</span> 不开 <span class="number">500</span>ms</span><br><span class="line">         开了 <span class="number">188</span>ms</span><br><span class="line">         类型应该是何前面的(<span class="keyword">int</span>) 相对应</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//加快输入输出</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> k=<span class="number">0</span>;<span class="keyword">char</span> ls;ls=getchar();<span class="keyword">for</span>(;ls&lt;<span class="string">'0'</span>||ls&gt;<span class="string">'9'</span>;k=ls,ls=getchar());</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">for</span>(;ls&gt;=<span class="string">'0'</span>&amp;&amp;ls&lt;=<span class="string">'9'</span>;ls=getchar())x=x*<span class="number">10</span>+ls-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="string">'-'</span>)x=<span class="number">0</span>-x;<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="状态压缩里面常用的一些东西"><a class="markdownIt-Anchor" href="#状态压缩里面常用的一些东西"></a> 状态压缩里面常用的一些东西</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1 获得当前行的数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getnum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    x &amp;= x<span class="number">-1</span>;</span><br><span class="line">    ret++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2 看当前行左右是不是满足题设</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x &amp; x&lt;&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 看是不是可以满足条件,和题目给的图一样,是可以放的,并且和上一个是不是会冲突</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">suit</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x&amp;y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数位dp"><a class="markdownIt-Anchor" href="#数位dp"></a> 数位dp</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 把各个数位上的数字存进去</span></span><br><span class="line">ll dfs(int len(数位),....(中间各个东西的转化),flag(是否在最高位,要限制))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span>(len&lt;<span class="number">0</span>) <span class="keyword">return</span> ..;</span><br><span class="line">  <span class="keyword">if</span>(!flag &amp;&amp; ~dp[len][...]) <span class="keyword">return</span> dp[len][...];</span><br><span class="line">  ll ans= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> Max = flag?shu[len]:<span class="number">9</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=Max;i++)</span><br><span class="line">   &#123;</span><br><span class="line">     ans += dfs(len<span class="number">-1</span>,...,flag&amp;&amp;i==Max);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(!flag) dp[len][...] = ans;</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">slove</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> co = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    shu[co] = x%<span class="number">10</span>;</span><br><span class="line">    x/=<span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dfs(co<span class="number">-1</span>,...,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">这是主要的一个套路;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2011,7 +2038,7 @@ dp[i] = p*dp[i-1] + (1-p)*dp[i-2];对于不是地雷的可以这样算。<br>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2024,7 +2051,7 @@ dp[i] = p*dp[i-1] + (1-p)*dp[i-2];对于不是地雷的可以这样算。<br>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
