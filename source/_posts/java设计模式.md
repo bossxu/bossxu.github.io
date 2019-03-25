@@ -60,7 +60,7 @@ tags:
 + lazy初始化
 + 多线程不安全
 ```java
-public xianchen
+public class xianchen
 {
     private static xianchen instance;
     private xianchen(){}
@@ -77,7 +77,7 @@ public xianchen
 + 多线程安全(加了一个synchronized锁)
 > 这个synchronized是java的一种同步锁，这里旧的说同步是啥，线程同步主要的目的是防止不同的线程对同一个文件同时进行操作造成奇奇怪怪的操作。然后这里又涉及到了进程与线程，还有java的多线程，哇，好菜啊，啥都不会。
 ```java
-public xianchen
+public class xianchen
 {
     private static xianchen instance;
     private xianchen(){}
@@ -89,16 +89,41 @@ public xianchen
     }
 }
 ```
-### 饿汉式，线程安全
+#### 饿汉式，线程安全
 + 没lazy初始化
++ 它基于 classloader 机制避免了多线程的同步问题，
 ```java
-public xianchen
+public class xianchen
 {
     private static xianchen instance = new xianchen();
     private xianchen(){}
     public static xianchen getInstance()
     {
         return instance;
+    }
+}
+```
+#### 双检锁/双重校验锁
++ lazy初始化
++ 多线程安全
+```java
+public class xianchen
+{
+    private volatile static xianchen instance;
+    private xianchen(){}
+    public static xianchen getXianchen()
+    {
+        if(instance == null )
+        {
+            synchronized(instance.class)
+            {
+                if(instance == null)
+                {
+                    instance = new xianchen();
+                }
+            }
+        }
+        return instance
     }
 }
 ```
