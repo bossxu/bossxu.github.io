@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="langman&#39;s blog">
 <meta property="og:description" content="java学习笔记  之前一直都是用c++去写acm题，最近因为更上的项目是用java写的，所以也想趁这个机会去系统的学一门语言。之前还是太水了，没有很好的去了解一些问题，主要还是去用一下stl的函数。而且课上教的东西也就那么点，没啥深入的，确实也没用到过。不过语言这种东西，通一门，门门通。不过我也不是什么都写，我写的都是我之前没有去了解过的东西.   java基础  基础环境 大佬们的博客  J">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-14T07:47:58.317Z">
+<meta property="og:updated_time" content="2019-03-16T14:10:52.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java学习笔记">
 <meta name="twitter:description" content="java学习笔记  之前一直都是用c++去写acm题，最近因为更上的项目是用java写的，所以也想趁这个机会去系统的学一门语言。之前还是太水了，没有很好的去了解一些问题，主要还是去用一下stl的函数。而且课上教的东西也就那么点，没啥深入的，确实也没用到过。不过语言这种东西，通一门，门门通。不过我也不是什么都写，我写的都是我之前没有去了解过的东西.   java基础  基础环境 大佬们的博客  J">
@@ -468,6 +468,71 @@
 <ul>
 <li>用在方法和变量上面就是调用问题，感觉好像就是那个c++的全局变量问题。</li>
 </ul>
+<h3 id="exception"><a class="markdownIt-Anchor" href="#exception"></a> exception</h3>
+<blockquote>
+<p>这个其实我在之前写数据库前端的时候就看到过，唉那个时候，就感觉自己的代码风格太草率了，我都是直接来的，然后就容易莫名其妙的程序卡死，一点鲁棒性都不留的。然后看别人数据库的代码都是try和catch哎呀，就很尴尬。嘤嘤嘤。<br>
+<strong>java里面的有关exception的</strong></p>
+</blockquote>
+<h4 id="异常和错误"><a class="markdownIt-Anchor" href="#异常和错误"></a> 异常和错误</h4>
+<ul>
+<li>检查性异常：最具代表的检查性异常是用户错误或问题引起的异常，这是程序员无法预见的。例如要打开一个不存在文件时，一个异常就发生了，这些异常在编译时不能被简单地忽略。</li>
+<li>运行时异常： 运行时异常是可能被程序员避免的异常。与检查性异常相反，运行时异常可以在编译时被忽略。</li>
+<li>错误： 错误不是异常，而是脱离程序员控制的问题。错误在代码中通常被忽略。例如，当栈溢出时，一个错误就发生了，它们在编译也检查不到的。</li>
+</ul>
+<h4 id="怎么重写"><a class="markdownIt-Anchor" href="#怎么重写"></a> 怎么重写</h4>
+<ul>
+<li>首先确定要你这个catch到的exception是存在的，其次就是再你的那个try语句里，你得确定，它是可以抛出这个你要catch的exception</li>
+<li>也就是说分为exception类的重写，以及exception抛出的方法的重写</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 所执行的语句</span></span><br><span class="line">    <span class="comment">// 语句中确定要抛出下面的exception</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(ExceptionName1 e)&#123;</span><br><span class="line">    <span class="comment">// 就是出错了，所该做的事</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(ExceptionName2 a)&#123;</span><br><span class="line">    <span class="comment">// 抓到第二个不同的错误，应该做啥。</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">    这个是不管会不会出错，都会去执行的</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> stastic <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> throw ExceptionName1 e,ExceptionName2 a</span>&#123;</span><br><span class="line">    <span class="comment">// 语法了解一下</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionName1 e;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ExceptionName2 a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="java面向对象"><a class="markdownIt-Anchor" href="#java面向对象"></a> java面向对象</h2>
+<h3 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h3>
+<h4 id="用法extends和implements"><a class="markdownIt-Anchor" href="#用法extends和implements"></a> 用法<strong>extends</strong>和<strong>implements</strong></h4>
+<h4 id="java继承类型"><a class="markdownIt-Anchor" href="#java继承类型"></a> java继承类型</h4>
+<blockquote>
+<p>单继承，多重继承，不同类继承同一个类[讲道理我好像没有看到过多继承存在的]</p>
+</blockquote>
+<h4 id="重写与重载"><a class="markdownIt-Anchor" href="#重写与重载"></a> 重写与重载</h4>
+<blockquote>
+<p>也就是一种特性把，重写比较常见的就是继承下面对父类的方法的重写，重载就是对于同一个名称的方法，对于不同的参数传入方法，有不同的操作的。常见的啊。</p>
+</blockquote>
+<h4 id="多态"><a class="markdownIt-Anchor" href="#多态"></a> 多态</h4>
+<blockquote>
+<p>这个感觉就是上面的</p>
+</blockquote>
+<h4 id="抽象类"><a class="markdownIt-Anchor" href="#抽象类"></a> 抽象类</h4>
+<blockquote>
+<p>没啥好说的，就是不能上实例呗。</p>
+</blockquote>
+<h4 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h4>
+<blockquote>
+<p>不是说java不能多继承吗，这里的意思就是这样，可以<strong>implements</strong>多个接口，相当于打标签把，接口的英文时<strong>interface</strong></p>
+</blockquote>
+<h4 id="包"><a class="markdownIt-Anchor" href="#包"></a> 包</h4>
+<blockquote>
+<p>这个还挺有用的，我之前用的maven创建项目，在导入其他的类文件时总是会出错，然后发现，在导入其他文件时，必须让这个文件属于一个包才可以去导入。</p>
+</blockquote>
+<h2 id="java常用数据结构"><a class="markdownIt-Anchor" href="#java常用数据结构"></a> java常用数据结构</h2>
+<blockquote>
+<p>我在c++里面经常用stl里面的vector,set,map,其他也没怎么用，在java里面好像有好多其他的数据结构。<br>
+主要分下面几种，具体的实现思想我到时候再看看</p>
+</blockquote>
+<ul>
+<li>枚举</li>
+<li>位集合</li>
+<li>向量</li>
+<li>栈</li>
+<li>字典</li>
+<li>哈希表</li>
+<li>属性</li>
+</ul>
+<h3 id="集合框架"><a class="markdownIt-Anchor" href="#集合框架"></a> 集合框架</h3>
+<blockquote>
+<p>这个就是说了很多的那个集合之间的一些继承的问题。<br>
+感觉需要知道的和常用的应该也就那些把<strong>hashmap,treemap,hashset,treeset,sortedset,sortedmap,vector,stack,queue,iterator</strong> 这些了解一下。</p>
+</blockquote>
+<h2 id="泛型"><a class="markdownIt-Anchor" href="#泛型"></a> 泛型</h2>
+<p>这个好像和我在数据结构的课上看到的那个对于不同的数据据结构进行操作。</p>
 
       
     </div>
@@ -677,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java学习笔记"><span class="nav-number">1.</span> <span class="nav-text"> java学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java基础"><span class="nav-number">1.1.</span> <span class="nav-text"> java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础环境"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 基础环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆和栈"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 堆和栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型与包装数据类型"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 基本数据类型与包装数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传参类型"><span class="nav-number">1.1.4.</span> <span class="nav-text"> 传参类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java修饰符"><span class="nav-number">1.1.5.</span> <span class="nav-text"> java修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java正则表达式"><span class="nav-number">1.1.6.</span> <span class="nav-text"> java正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的命名规则"><span class="nav-number">1.1.7.</span> <span class="nav-text"> 方法的命名规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">1.1.8.</span> <span class="nav-text"> static</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java学习笔记"><span class="nav-number">1.</span> <span class="nav-text"> java学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java基础"><span class="nav-number">1.1.</span> <span class="nav-text"> java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础环境"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 基础环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆和栈"><span class="nav-number">1.1.2.</span> <span class="nav-text"> 堆和栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型与包装数据类型"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 基本数据类型与包装数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传参类型"><span class="nav-number">1.1.4.</span> <span class="nav-text"> 传参类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java修饰符"><span class="nav-number">1.1.5.</span> <span class="nav-text"> java修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java正则表达式"><span class="nav-number">1.1.6.</span> <span class="nav-text"> java正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法的命名规则"><span class="nav-number">1.1.7.</span> <span class="nav-text"> 方法的命名规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">1.1.8.</span> <span class="nav-text"> static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exception"><span class="nav-number">1.1.9.</span> <span class="nav-text"> exception</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#异常和错误"><span class="nav-number">1.1.9.1.</span> <span class="nav-text"> 异常和错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎么重写"><span class="nav-number">1.1.9.2.</span> <span class="nav-text"> 怎么重写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java面向对象"><span class="nav-number">1.2.</span> <span class="nav-text"> java面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用法extends和implements"><span class="nav-number">1.2.1.1.</span> <span class="nav-text"> 用法extends和implements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java继承类型"><span class="nav-number">1.2.1.2.</span> <span class="nav-text"> java继承类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重写与重载"><span class="nav-number">1.2.1.3.</span> <span class="nav-text"> 重写与重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态"><span class="nav-number">1.2.1.4.</span> <span class="nav-text"> 多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类"><span class="nav-number">1.2.1.5.</span> <span class="nav-text"> 抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">1.2.1.6.</span> <span class="nav-text"> 接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包"><span class="nav-number">1.2.1.7.</span> <span class="nav-text"> 包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java常用数据结构"><span class="nav-number">1.3.</span> <span class="nav-text"> java常用数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合框架"><span class="nav-number">1.3.1.</span> <span class="nav-text"> 集合框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型"><span class="nav-number">1.4.</span> <span class="nav-text"> 泛型</span></a></li></ol></li></ol></div>
             
 
           </div>
