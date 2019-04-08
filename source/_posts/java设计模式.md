@@ -1,7 +1,7 @@
 ---
 title: java设计模式
 date: 2019-03-23 13:51:29
-tags:
+tags: [java,面对对象编程]
 ---
 
 ### 这是啥
@@ -106,6 +106,7 @@ public class xianchen
 #### 双检锁/双重校验锁
 + lazy初始化
 + 多线程安全
++ volatile目的在于防止编译器优化，编译器在每次用到这个变量时会小心的**重新**读取这个变量的值，而不是使用保存在寄存器的备份。
 ```java
 public class xianchen
 {
@@ -127,3 +128,28 @@ public class xianchen
     }
 }
 ```
+#### 登记式/静态内部类
++ lazy初始化
++ 多线程安全(classloader)
++ 目的在于延迟加载实例，**只有显式调用才能出现显式装载**
+```java
+public class xianchen
+{
+    private static class xianchenHolder{
+        private static final xianchen instance = new xianchen()
+    }
+    private xianchen(){}
+    public static final xianchen getInstance 
+    {
+        return xianchenHolder.instance;
+    }
+}
+```
+#### 枚举
++ 好象还没有普及使用
+
+
+
+### 建造者模式
+> 使用多个简单的对象一步一步构建成一个复杂的对象，这种类型的设计模式属于创建型模式，**提供了一种创建对象**
+> 目的在于解决软件系统中，面临的“一个复杂对象”的创建工作，由于需求的变化，这个复杂对象的各个部分经常面临着剧烈的变化，但是组合他们的算法却相对稳定。
