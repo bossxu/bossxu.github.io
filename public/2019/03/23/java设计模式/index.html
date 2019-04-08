@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面对对象,设计模式," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这是啥  设计模式（Design Pattern）是前辈们对代码开发经验的总结，是解决特定问题的一系列套路。它不是语法规定，而是一套用来提高代码可复用性、可维护性、可读性、稳健性以及安全性的解决方案。讲道理这个还是挺重要的。反正我看自己写的代码，感觉挺丑的。 四人帮提出的一个思想，是面对对象中常用的设计原则，关键的思想在于   对接口编程而不是对实现编程。 优先使用对象组合而不是继承。   主要">
+<meta name="keywords" content="面对对象,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java设计模式">
+<meta property="og:url" content="http://yoursite.com/2019/03/23/java设计模式/index.html">
+<meta property="og:site_name" content="langman&#39;s blog">
+<meta property="og:description" content="这是啥  设计模式（Design Pattern）是前辈们对代码开发经验的总结，是解决特定问题的一系列套路。它不是语法规定，而是一套用来提高代码可复用性、可维护性、可读性、稳健性以及安全性的解决方案。讲道理这个还是挺重要的。反正我看自己写的代码，感觉挺丑的。 四人帮提出的一个思想，是面对对象中常用的设计原则，关键的思想在于   对接口编程而不是对实现编程。 优先使用对象组合而不是继承。   主要">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-27T14:19:42.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java设计模式">
+<meta name="twitter:description" content="这是啥  设计模式（Design Pattern）是前辈们对代码开发经验的总结，是解决特定问题的一系列套路。它不是语法规定，而是一套用来提高代码可复用性、可维护性、可读性、稳健性以及安全性的解决方案。讲道理这个还是挺重要的。反正我看自己写的代码，感觉挺丑的。 四人帮提出的一个思想，是面对对象中常用的设计原则，关键的思想在于   对接口编程而不是对实现编程。 优先使用对象组合而不是继承。   主要">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/23/java设计模式/"/>
+
+
+
+
+
+  <title>java设计模式 | langman's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">langman's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">do what i want</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            links
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/java设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java设计模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T13:51:29+08:00">
+                2019-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="这是啥"><a class="markdownIt-Anchor" href="#这是啥"></a> 这是啥</h3>
+<blockquote>
+<p>设计模式（Design Pattern）是前辈们对代码开发经验的总结，是解决特定问题的一系列套路。它不是语法规定，而是一套用来提高代码可复用性、可维护性、可读性、稳健性以及安全性的解决方案。讲道理这个还是挺重要的。反正我看自己写的代码，感觉挺丑的。<br>
+四人帮提出的一个思想，是面对对象中常用的设计原则，关键的思想在于</p>
+</blockquote>
+<ul>
+<li>对接口编程而不是对实现编程。</li>
+<li>优先使用对象组合而不是继承。</li>
+</ul>
+<blockquote>
+<p>主要学习是通过看<a href="http://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">菜鸟教程</a></p>
+</blockquote>
+<h3 id="分类"><a class="markdownIt-Anchor" href="#分类"></a> 分类</h3>
+<ul>
+<li>创建型模式<br>
+这些设计模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用 new 运算符直接实例化对象。这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活。</li>
+<li>结构型模式<br>
+这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。</li>
+<li>行为型模型<br>
+这些设计模式特别关注对象之间的通信。</li>
+<li>J2EE 模式<br>
+这些设计模式特别关注表示层。这些模式是由 Sun Java Center 鉴定的。</li>
+</ul>
+<h3 id="6大原则"><a class="markdownIt-Anchor" href="#6大原则"></a> 6大原则</h3>
+<ul>
+<li>
+<p>开闭原则<br>
+对扩展开放，对修改关闭。</p>
+</li>
+<li>
+<p>里氏代换原则（Liskov Substitution Principle）<br>
+任何基类可以出现的地方，子类一定可以出现</p>
+</li>
+<li>
+<p>依赖倒转原则<br>
+针对接口编程，依赖于抽象而不依赖于具体</p>
+</li>
+<li>
+<p>接口隔离原则<br>
+使用多个隔离的接口，比使用单个接口要好。目的在于降低类之间的耦合度</p>
+</li>
+<li>
+<p>迪米特法则，最少知道原则<br>
+一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立</p>
+</li>
+<li>
+<p>合成复用原则<br>
+尽量使用合成/聚合的方式，而不是使用继承</p>
+</li>
+</ul>
+<blockquote>
+<p>emememem 可以说很复杂了</p>
+</blockquote>
+<h3 id="工厂模式"><a class="markdownIt-Anchor" href="#工厂模式"></a> 工厂模式</h3>
+<ul>
+<li>创建型模式</li>
+<li>目的：<strong>定义一个创建对象的接口</strong>，让子类自己去决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。</li>
+<li>个人看法，这个好像就是说，做一个接口去实现对象的创建，目的有啥呢，一个是扩展性好，加产品加一个工厂，加一个实现类就完事了[额，感觉到后面会越来越多]，还有就是封装性？还有就是，他说是对一些比较复杂的对象有好处。</li>
+</ul>
+<h3 id="抽象工厂模式"><a class="markdownIt-Anchor" href="#抽象工厂模式"></a> 抽象工厂模式</h3>
+<ul>
+<li>是围绕一个超级工厂创建其他工厂</li>
+<li>目的：提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类</li>
+<li>个人看法，不是说对扩展开放，对修改关闭，问题这里，没有办法解决把，增加一个类，则要增加一个类，也要加一个工厂，但是这里的抽象工厂也是要进行修改才行。不过也只是要修改那个工厂制作的东西</li>
+</ul>
+<h3 id="单例模式"><a class="markdownIt-Anchor" href="#单例模式"></a> 单例模式</h3>
+<ul>
+<li>只能有一个实例，并且只能自己去创建自己的实例，单例类必须给所有其他对象提供这一实例</li>
+<li>目的在于解决一个全局使用得类频繁的创建与销毁</li>
+<li>几种实现的方式，目的在于一个安全性的考虑</li>
+</ul>
+<h4 id="懒汉式模式"><a class="markdownIt-Anchor" href="#懒汉式模式"></a> 懒汉式模式</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程不安全</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> xianchen instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xianchen <span class="title">getinstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="懒汉式线程安全"><a class="markdownIt-Anchor" href="#懒汉式线程安全"></a> 懒汉式，线程安全</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程安全(加了一个synchronized锁)</li>
+</ul>
+<blockquote>
+<p>这个synchronized是java的一种同步锁，这里旧的说同步是啥，线程同步主要的目的是防止不同的线程对同一个文件同时进行操作造成奇奇怪怪的操作。然后这里又涉及到了进程与线程，还有java的多线程，哇，好菜啊，啥都不会。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> xianchen instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> xianchen <span class="title">getinstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="饿汉式线程安全"><a class="markdownIt-Anchor" href="#饿汉式线程安全"></a> 饿汉式，线程安全</h4>
+<ul>
+<li>没lazy初始化</li>
+<li>它基于 classloader 机制避免了多线程的同步问题，</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> xianchen instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xianchen <span class="title">getInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="双检锁双重校验锁"><a class="markdownIt-Anchor" href="#双检锁双重校验锁"></a> 双检锁/双重校验锁</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程安全</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> xianchen instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xianchen <span class="title">getXianchen</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span> )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(instance.class)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="静部内态类"><a class="markdownIt-Anchor" href="#静部内态类"></a> 静部内态类</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程安全</li>
+<li>对静态域进行延迟初始化,这个的目的在于，只有getinstance被显式调用的时候，才会显式装载xianchen类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchenHolder</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> xianchen instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> xianchen <span class="title">getinstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> xianchenHolder.instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="枚举"><a class="markdownIt-Anchor" href="#枚举"></a> 枚举</h4>
+<ul>
+<li>好像不太实用</li>
+</ul>
+<h3 id="建造者模式"><a class="markdownIt-Anchor" href="#建造者模式"></a> 建造者模式</h3>
+<ul>
+<li>将一个复杂的构建与表示相分离</li>
+<li>一些基本部件不会变，而其组合经常变化。</li>
+<li>将变与不变分离开</li>
+</ul>
+<h3 id="原型模式"><a class="markdownIt-Anchor" href="#原型模式"></a> 原型模式</h3>
+<ul>
+<li>用于创建重复的对象，同时又能保证性能。</li>
+<li>常用于直接创建对象的代价比较大的时候</li>
+</ul>
+<h3 id="适配器模式"><a class="markdownIt-Anchor" href="#适配器模式"></a> 适配器模式</h3>
+<ul>
+<li>作为两个互相不兼容的接口之间的桥梁</li>
+<li>将一个类的接口转换成客户希望的另外一个接口</li>
+<li>解决方法：继承和依赖</li>
+</ul>
+<h3 id="桥接模式"><a class="markdownIt-Anchor" href="#桥接模式"></a> 桥接模式</h3>
+<ul>
+<li>将抽象和现实分离开，解决的是类继承爆炸的问题。</li>
+<li>得理解那个抽象得意义，感觉就是把它内部的一些常用的接口给提出来，然后对这个接口进行实例的操作。</li>
+</ul>
+<h3 id="过滤器模式"><a class="markdownIt-Anchor" href="#过滤器模式"></a> 过滤器模式</h3>
+<ul>
+<li>对于不用的类，有不同的过滤方式，比如说list<num>,和list<float>都有不同的过滤方式。就是传进来的是一个集合，但是对于里面的数据，怎么过滤出需要的元素。</float></num></li>
+</ul>
+<h3 id="组合模式"><a class="markdownIt-Anchor" href="#组合模式"></a> 组合模式</h3>
+<ul>
+<li>将对象组合成树形结构已表示“部分整体”的层次结构，组合模式让单个对象和组合对象的使用具有一致性。感觉就是vector里面加vector</li>
+</ul>
+<h3 id="装饰器模式"><a class="markdownIt-Anchor" href="#装饰器模式"></a> 装饰器模式</h3>
+<ul>
+<li>允许向一个现有的类添加新的功能</li>
+<li>感觉是通过继承的方法来解决的。然后它又说子类太多很麻烦</li>
+<li>用一个抽象类，加一个修饰类，抽象类不具体实现，修饰类去实现。</li>
+</ul>
+<h3 id="外观模式"><a class="markdownIt-Anchor" href="#外观模式"></a> 外观模式</h3>
+<ul>
+<li>目的是隐藏系统的复杂性，向客户端提供了一个可以访问系统的接口</li>
+<li>在客户端和复杂系统之间再加一层，这一层将调用顺序、依赖关系等处理好。</li>
+<li>相当于那个前台</li>
+</ul>
+<h3 id="享元模式"><a class="markdownIt-Anchor" href="#享元模式"></a> 享元模式</h3>
+<ul>
+<li>目的：减少创建对象的数量</li>
+<li>加一个hashmap，看某个文件是不是出现过，没出现过就初始化，不然就从内存池里面拿出来。</li>
+<li>java里面的string</li>
+</ul>
+<h3 id="代理模式"><a class="markdownIt-Anchor" href="#代理模式"></a> 代理模式</h3>
+<ul>
+<li>一个类代表另一个类的功能</li>
+<li>增加中间层</li>
+<li>windows中的中间层</li>
+</ul>
+<h3 id="责任链模式"><a class="markdownIt-Anchor" href="#责任链模式"></a> 责任链模式</h3>
+<ul>
+<li>为请求创建了一个接收者对象的链</li>
+<li>目的在于将请求者和发送者解耦，好像感觉只有在多线程才会出事。</li>
+<li>有多个对象可以处理同一个请求，具体哪个对象处理，由那个时刻处理</li>
+</ul>
+<h3 id="命令模式"><a class="markdownIt-Anchor" href="#命令模式"></a> 命令模式</h3>
+<ul>
+<li>将命令分装成一个对象进行处理</li>
+<li>感觉这个还是挺好理解的</li>
+</ul>
+<h3 id="解释器模式"><a class="markdownIt-Anchor" href="#解释器模式"></a> 解释器模式</h3>
+<ul>
+<li>好像是说，相当于是一个解释器，像sql查询语句就是这样，对一些看起来可能不同的语言进行解析。</li>
+</ul>
+<h3 id="迭代器模式"><a class="markdownIt-Anchor" href="#迭代器模式"></a> 迭代器模式</h3>
+<ul>
+<li>这个熟悉，c++中的set，map的遍历就是用这个</li>
+</ul>
+<h3 id="中介者模式"><a class="markdownIt-Anchor" href="#中介者模式"></a> 中介者模式</h3>
+<ul>
+<li>用来降低多个对象和类之间的通信复杂度</li>
+<li>操作时将网状结构分离成星型结构(中心论)</li>
+<li>比如聊天室</li>
+</ul>
+<h3 id="备忘录模式"><a class="markdownIt-Anchor" href="#备忘录模式"></a> 备忘录模式</h3>
+<ul>
+<li>在不破坏封装性的前提下，获得一个对象的内部状态，并在对象之外保存这个状态</li>
+<li>像存档</li>
+</ul>
+<h3 id="观察者模式"><a class="markdownIt-Anchor" href="#观察者模式"></a> 观察者模式</h3>
+<ul>
+<li>存在一对多的关系时，当一个被改时，被依赖的类会被通知并自动更新。</li>
+<li>用一个集合去存这个</li>
+</ul>
+<h3 id="状态者模式"><a class="markdownIt-Anchor" href="#状态者模式"></a> 状态者模式</h3>
+<ul>
+<li>就是类的行为是由它的状态决定的</li>
+<li>但是这个对象，不同的状态对象还是不同的。</li>
+</ul>
+<h3 id="空对象模式"><a class="markdownIt-Anchor" href="#空对象模式"></a> 空对象模式</h3>
+<ul>
+<li>继承一下，一个抽象类，一个实例类，一个啥都不去做的空类，感觉没啥用，除了体系更健全。</li>
+</ul>
+<h3 id="策略模式"><a class="markdownIt-Anchor" href="#策略模式"></a> 策略模式</h3>
+<ul>
+<li>一个类的行为和算法能在运行时更改</li>
+<li>将算法打包成类，进行替换操作。不过几个算法要差不多，分装好才行。</li>
+</ul>
+<h3 id="模板模式"><a class="markdownIt-Anchor" href="#模板模式"></a> 模板模式</h3>
+<ul>
+<li>抽象类公开定义执行它的方法/模板。</li>
+<li>它的子类可以按需要重写方法实现</li>
+<li>好像没啥说的，就是很正常的。</li>
+</ul>
+<h3 id="访问者模式"><a class="markdownIt-Anchor" href="#访问者模式"></a> 访问者模式</h3>
+<ul>
+<li>将数据与数据结构分离开</li>
+<li>在被访问的类里面加一个对外提供接待访问者的接口。</li>
+<li>感觉这个的目的就在于防止对数据本生进行操作(加一层，有用？可能自我欺骗，嘿嘿嘿)</li>
+</ul>
+<h3 id="mvc模式"><a class="markdownIt-Anchor" href="#mvc模式"></a> mvc模式</h3>
+<ul>
+<li>Model-View-Controller（模型-视图-控制器） 模式，这个好像是挺重要的一个模式，之前就听说过这个东西。用于分层开发。</li>
+<li>model 代表一个存取数据的对象</li>
+<li>view 视图代表包含数据的可视化</li>
+<li>controller 控制器作用于模型和视图上，他控制数据流向模型对象，并在数据变化时更新视图</li>
+<li>不过咋感觉和那个适配器有点像，控制器那个</li>
+</ul>
+<h3 id="业务代表模式"><a class="markdownIt-Anchor" href="#业务代表模式"></a> 业务代表模式</h3>
+<ul>
+<li>用于对表示层和业务层解耦，前端和后端分离？</li>
+<li>业务实现向外暴露统一接口。由业务代表来具体查询和掉用业务接口执行相关业务，而客户则只需要想业务代表调用相关简化后的接口即可实现响应业务。</li>
+<li>好像springboot里面的controler和service，集成一下，再暴露给外面。</li>
+</ul>
+<h3 id="组合实体模式"><a class="markdownIt-Anchor" href="#组合实体模式"></a> 组合实体模式</h3>
+<ul>
+<li>说用在ejb持久化机制里面？？？？</li>
+<li>先码着，四个参与者</li>
+<li>组合实体，粗粒度对象，依赖对象，策略</li>
+<li>ememe看那个例子，感觉就是</li>
+</ul>
+<h3 id="数据访问对象模式"><a class="markdownIt-Anchor" href="#数据访问对象模式"></a> 数据访问对象模式</h3>
+<ul>
+<li>用在把低级的数据访问api从高级的业务服务中分离出来。</li>
+<li>三个组成部分</li>
+<li>数据访问对象接口</li>
+<li>数据访问对象实体类</li>
+<li>模型对象/数值对象</li>
+<li>这个感觉好像还挺重要的，对象于数据库里面一行进行对应。</li>
+</ul>
+<h3 id="前端控制器模式"><a class="markdownIt-Anchor" href="#前端控制器模式"></a> 前端控制器模式</h3>
+<ul>
+<li>目的在于提供一个集中的请求处理机制</li>
+<li>前端控制器： 处理应用程序所有类型请求的单个处理程序</li>
+<li>调度器：前端控制器可能使用一个调度器对象来调度请求到相应的具体处理程序</li>
+<li>视图是为请求而创建的对象</li>
+</ul>
+<h3 id="拦截过滤器模式"><a class="markdownIt-Anchor" href="#拦截过滤器模式"></a> 拦截过滤器模式</h3>
+<ul>
+<li>目的是对应用程序的请求或响应做一些预处理/后处理，</li>
+</ul>
+<h3 id="服务定位器模式"><a class="markdownIt-Anchor" href="#服务定位器模式"></a> 服务定位器模式</h3>
+<ul>
+<li>目的是利用缓存来解决在查找服务代价高的问题</li>
+</ul>
+<h3 id="传输对象模式"><a class="markdownIt-Anchor" href="#传输对象模式"></a> 传输对象模式</h3>
+<ul>
+<li>用于客户端向服务器一次性传递多个带属性的数值</li>
+<li>感觉就是相当于多一个模板从省城的作用</li>
+</ul>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<blockquote>
+<p>哇,23个设计模式，好多啊，看的我头皮发麻，很多感觉也只是一知半解，这个还是得通过以后得面对对象编程去总结经验。这个并不是什么教学啊，这只是我的个人笔记，有想法的去看<a href="http://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">菜鸟教程</a><br>
+这个设计模式，主要的目的是提高一个代码的规范性，可扩展性，还有就是一些常见的面对对象的一个技巧，不管怎么说，万物皆对象。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面对对象/" rel="tag"># 面对对象</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/面试常见问题-数据结构/" rel="next" title="面试常见问题[数据结构]">
+                <i class="fa fa-chevron-left"></i> 面试常见问题[数据结构]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/mypic.jpg"
+                alt="langman" />
+            
+              <p class="site-author-name" itemprop="name">langman</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bossxu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:7567636763@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cubercsl.cn/" title="csl" target="_blank">csl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ybmj.xyz/" title="ybmj" target="_blank">ybmj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://500kg.github.io/" title="500kg" target="_blank">500kg</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#这是啥"><span class="nav-number">1.</span> <span class="nav-text"> 这是啥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">2.</span> <span class="nav-text"> 分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6大原则"><span class="nav-number">3.</span> <span class="nav-text"> 6大原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式"><span class="nav-number">4.</span> <span class="nav-text"> 工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象工厂模式"><span class="nav-number">5.</span> <span class="nav-text"> 抽象工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式"><span class="nav-number">6.</span> <span class="nav-text"> 单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉式模式"><span class="nav-number">6.1.</span> <span class="nav-text"> 懒汉式模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉式线程安全"><span class="nav-number">6.2.</span> <span class="nav-text"> 懒汉式，线程安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饿汉式线程安全"><span class="nav-number">6.3.</span> <span class="nav-text"> 饿汉式，线程安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双检锁双重校验锁"><span class="nav-number">6.4.</span> <span class="nav-text"> 双检锁/双重校验锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静部内态类"><span class="nav-number">6.5.</span> <span class="nav-text"> 静部内态类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举"><span class="nav-number">6.6.</span> <span class="nav-text"> 枚举</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建造者模式"><span class="nav-number">7.</span> <span class="nav-text"> 建造者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">8.</span> <span class="nav-text"> 原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适配器模式"><span class="nav-number">9.</span> <span class="nav-text"> 适配器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桥接模式"><span class="nav-number">10.</span> <span class="nav-text"> 桥接模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器模式"><span class="nav-number">11.</span> <span class="nav-text"> 过滤器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合模式"><span class="nav-number">12.</span> <span class="nav-text"> 组合模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器模式"><span class="nav-number">13.</span> <span class="nav-text"> 装饰器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外观模式"><span class="nav-number">14.</span> <span class="nav-text"> 外观模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#享元模式"><span class="nav-number">15.</span> <span class="nav-text"> 享元模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理模式"><span class="nav-number">16.</span> <span class="nav-text"> 代理模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#责任链模式"><span class="nav-number">17.</span> <span class="nav-text"> 责任链模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令模式"><span class="nav-number">18.</span> <span class="nav-text"> 命令模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释器模式"><span class="nav-number">19.</span> <span class="nav-text"> 解释器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器模式"><span class="nav-number">20.</span> <span class="nav-text"> 迭代器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中介者模式"><span class="nav-number">21.</span> <span class="nav-text"> 中介者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备忘录模式"><span class="nav-number">22.</span> <span class="nav-text"> 备忘录模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式"><span class="nav-number">23.</span> <span class="nav-text"> 观察者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态者模式"><span class="nav-number">24.</span> <span class="nav-text"> 状态者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空对象模式"><span class="nav-number">25.</span> <span class="nav-text"> 空对象模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式"><span class="nav-number">26.</span> <span class="nav-text"> 策略模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板模式"><span class="nav-number">27.</span> <span class="nav-text"> 模板模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问者模式"><span class="nav-number">28.</span> <span class="nav-text"> 访问者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mvc模式"><span class="nav-number">29.</span> <span class="nav-text"> mvc模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#业务代表模式"><span class="nav-number">30.</span> <span class="nav-text"> 业务代表模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合实体模式"><span class="nav-number">31.</span> <span class="nav-text"> 组合实体模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据访问对象模式"><span class="nav-number">32.</span> <span class="nav-text"> 数据访问对象模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端控制器模式"><span class="nav-number">33.</span> <span class="nav-text"> 前端控制器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截过滤器模式"><span class="nav-number">34.</span> <span class="nav-text"> 拦截过滤器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务定位器模式"><span class="nav-number">35.</span> <span class="nav-text"> 服务定位器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输对象模式"><span class="nav-number">36.</span> <span class="nav-text"> 传输对象模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text"> 总结</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">langman</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -259,6 +259,824 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/java设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/23/java设计模式/" itemprop="url">java设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T13:51:29+08:00">
+                2019-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="这是啥"><a class="markdownIt-Anchor" href="#这是啥"></a> 这是啥</h3>
+<blockquote>
+<p>设计模式（Design Pattern）是前辈们对代码开发经验的总结，是解决特定问题的一系列套路。它不是语法规定，而是一套用来提高代码可复用性、可维护性、可读性、稳健性以及安全性的解决方案。讲道理这个还是挺重要的。反正我看自己写的代码，感觉挺丑的。<br>
+四人帮提出的一个思想，是面对对象中常用的设计原则，关键的思想在于</p>
+</blockquote>
+<ul>
+<li>对接口编程而不是对实现编程。</li>
+<li>优先使用对象组合而不是继承。</li>
+</ul>
+<blockquote>
+<p>主要学习是通过看<a href="http://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">菜鸟教程</a></p>
+</blockquote>
+<h3 id="分类"><a class="markdownIt-Anchor" href="#分类"></a> 分类</h3>
+<ul>
+<li>创建型模式<br>
+这些设计模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用 new 运算符直接实例化对象。这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活。</li>
+<li>结构型模式<br>
+这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。</li>
+<li>行为型模型<br>
+这些设计模式特别关注对象之间的通信。</li>
+<li>J2EE 模式<br>
+这些设计模式特别关注表示层。这些模式是由 Sun Java Center 鉴定的。</li>
+</ul>
+<h3 id="6大原则"><a class="markdownIt-Anchor" href="#6大原则"></a> 6大原则</h3>
+<ul>
+<li>
+<p>开闭原则<br>
+对扩展开放，对修改关闭。</p>
+</li>
+<li>
+<p>里氏代换原则（Liskov Substitution Principle）<br>
+任何基类可以出现的地方，子类一定可以出现</p>
+</li>
+<li>
+<p>依赖倒转原则<br>
+针对接口编程，依赖于抽象而不依赖于具体</p>
+</li>
+<li>
+<p>接口隔离原则<br>
+使用多个隔离的接口，比使用单个接口要好。目的在于降低类之间的耦合度</p>
+</li>
+<li>
+<p>迪米特法则，最少知道原则<br>
+一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立</p>
+</li>
+<li>
+<p>合成复用原则<br>
+尽量使用合成/聚合的方式，而不是使用继承</p>
+</li>
+</ul>
+<blockquote>
+<p>emememem 可以说很复杂了</p>
+</blockquote>
+<h3 id="工厂模式"><a class="markdownIt-Anchor" href="#工厂模式"></a> 工厂模式</h3>
+<ul>
+<li>创建型模式</li>
+<li>目的：<strong>定义一个创建对象的接口</strong>，让子类自己去决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。</li>
+<li>个人看法，这个好像就是说，做一个接口去实现对象的创建，目的有啥呢，一个是扩展性好，加产品加一个工厂，加一个实现类就完事了[额，感觉到后面会越来越多]，还有就是封装性？还有就是，他说是对一些比较复杂的对象有好处。</li>
+</ul>
+<h3 id="抽象工厂模式"><a class="markdownIt-Anchor" href="#抽象工厂模式"></a> 抽象工厂模式</h3>
+<ul>
+<li>是围绕一个超级工厂创建其他工厂</li>
+<li>目的：提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类</li>
+<li>个人看法，不是说对扩展开放，对修改关闭，问题这里，没有办法解决把，增加一个类，则要增加一个类，也要加一个工厂，但是这里的抽象工厂也是要进行修改才行。不过也只是要修改那个工厂制作的东西</li>
+</ul>
+<h3 id="单例模式"><a class="markdownIt-Anchor" href="#单例模式"></a> 单例模式</h3>
+<ul>
+<li>只能有一个实例，并且只能自己去创建自己的实例，单例类必须给所有其他对象提供这一实例</li>
+<li>目的在于解决一个全局使用得类频繁的创建与销毁</li>
+<li>几种实现的方式，目的在于一个安全性的考虑</li>
+</ul>
+<h4 id="懒汉式模式"><a class="markdownIt-Anchor" href="#懒汉式模式"></a> 懒汉式模式</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程不安全</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> xianchen instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xianchen <span class="title">getinstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="懒汉式线程安全"><a class="markdownIt-Anchor" href="#懒汉式线程安全"></a> 懒汉式，线程安全</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程安全(加了一个synchronized锁)</li>
+</ul>
+<blockquote>
+<p>这个synchronized是java的一种同步锁，这里旧的说同步是啥，线程同步主要的目的是防止不同的线程对同一个文件同时进行操作造成奇奇怪怪的操作。然后这里又涉及到了进程与线程，还有java的多线程，哇，好菜啊，啥都不会。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> xianchen instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> xianchen <span class="title">getinstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</span><br><span class="line">            instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="饿汉式线程安全"><a class="markdownIt-Anchor" href="#饿汉式线程安全"></a> 饿汉式，线程安全</h4>
+<ul>
+<li>没lazy初始化</li>
+<li>它基于 classloader 机制避免了多线程的同步问题，</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> xianchen instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xianchen <span class="title">getInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="双检锁双重校验锁"><a class="markdownIt-Anchor" href="#双检锁双重校验锁"></a> 双检锁/双重校验锁</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程安全</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> xianchen instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> xianchen <span class="title">getXianchen</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span> )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(instance.class)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="静部内态类"><a class="markdownIt-Anchor" href="#静部内态类"></a> 静部内态类</h4>
+<ul>
+<li>lazy初始化</li>
+<li>多线程安全</li>
+<li>对静态域进行延迟初始化,这个的目的在于，只有getinstance被显式调用的时候，才会显式装载xianchen类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchen</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">xianchenHolder</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> xianchen instance = <span class="keyword">new</span> xianchen();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">xianchen</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> xianchen <span class="title">getinstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> xianchenHolder.instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="枚举"><a class="markdownIt-Anchor" href="#枚举"></a> 枚举</h4>
+<ul>
+<li>好像不太实用</li>
+</ul>
+<h3 id="建造者模式"><a class="markdownIt-Anchor" href="#建造者模式"></a> 建造者模式</h3>
+<ul>
+<li>将一个复杂的构建与表示相分离</li>
+<li>一些基本部件不会变，而其组合经常变化。</li>
+<li>将变与不变分离开</li>
+</ul>
+<h3 id="原型模式"><a class="markdownIt-Anchor" href="#原型模式"></a> 原型模式</h3>
+<ul>
+<li>用于创建重复的对象，同时又能保证性能。</li>
+<li>常用于直接创建对象的代价比较大的时候</li>
+</ul>
+<h3 id="适配器模式"><a class="markdownIt-Anchor" href="#适配器模式"></a> 适配器模式</h3>
+<ul>
+<li>作为两个互相不兼容的接口之间的桥梁</li>
+<li>将一个类的接口转换成客户希望的另外一个接口</li>
+<li>解决方法：继承和依赖</li>
+</ul>
+<h3 id="桥接模式"><a class="markdownIt-Anchor" href="#桥接模式"></a> 桥接模式</h3>
+<ul>
+<li>将抽象和现实分离开，解决的是类继承爆炸的问题。</li>
+<li>得理解那个抽象得意义，感觉就是把它内部的一些常用的接口给提出来，然后对这个接口进行实例的操作。</li>
+</ul>
+<h3 id="过滤器模式"><a class="markdownIt-Anchor" href="#过滤器模式"></a> 过滤器模式</h3>
+<ul>
+<li>对于不用的类，有不同的过滤方式，比如说list<num>,和list<float>都有不同的过滤方式。就是传进来的是一个集合，但是对于里面的数据，怎么过滤出需要的元素。</float></num></li>
+</ul>
+<h3 id="组合模式"><a class="markdownIt-Anchor" href="#组合模式"></a> 组合模式</h3>
+<ul>
+<li>将对象组合成树形结构已表示“部分整体”的层次结构，组合模式让单个对象和组合对象的使用具有一致性。感觉就是vector里面加vector</li>
+</ul>
+<h3 id="装饰器模式"><a class="markdownIt-Anchor" href="#装饰器模式"></a> 装饰器模式</h3>
+<ul>
+<li>允许向一个现有的类添加新的功能</li>
+<li>感觉是通过继承的方法来解决的。然后它又说子类太多很麻烦</li>
+<li>用一个抽象类，加一个修饰类，抽象类不具体实现，修饰类去实现。</li>
+</ul>
+<h3 id="外观模式"><a class="markdownIt-Anchor" href="#外观模式"></a> 外观模式</h3>
+<ul>
+<li>目的是隐藏系统的复杂性，向客户端提供了一个可以访问系统的接口</li>
+<li>在客户端和复杂系统之间再加一层，这一层将调用顺序、依赖关系等处理好。</li>
+<li>相当于那个前台</li>
+</ul>
+<h3 id="享元模式"><a class="markdownIt-Anchor" href="#享元模式"></a> 享元模式</h3>
+<ul>
+<li>目的：减少创建对象的数量</li>
+<li>加一个hashmap，看某个文件是不是出现过，没出现过就初始化，不然就从内存池里面拿出来。</li>
+<li>java里面的string</li>
+</ul>
+<h3 id="代理模式"><a class="markdownIt-Anchor" href="#代理模式"></a> 代理模式</h3>
+<ul>
+<li>一个类代表另一个类的功能</li>
+<li>增加中间层</li>
+<li>windows中的中间层</li>
+</ul>
+<h3 id="责任链模式"><a class="markdownIt-Anchor" href="#责任链模式"></a> 责任链模式</h3>
+<ul>
+<li>为请求创建了一个接收者对象的链</li>
+<li>目的在于将请求者和发送者解耦，好像感觉只有在多线程才会出事。</li>
+<li>有多个对象可以处理同一个请求，具体哪个对象处理，由那个时刻处理</li>
+</ul>
+<h3 id="命令模式"><a class="markdownIt-Anchor" href="#命令模式"></a> 命令模式</h3>
+<ul>
+<li>将命令分装成一个对象进行处理</li>
+<li>感觉这个还是挺好理解的</li>
+</ul>
+<h3 id="解释器模式"><a class="markdownIt-Anchor" href="#解释器模式"></a> 解释器模式</h3>
+<ul>
+<li>好像是说，相当于是一个解释器，像sql查询语句就是这样，对一些看起来可能不同的语言进行解析。</li>
+</ul>
+<h3 id="迭代器模式"><a class="markdownIt-Anchor" href="#迭代器模式"></a> 迭代器模式</h3>
+<ul>
+<li>这个熟悉，c++中的set，map的遍历就是用这个</li>
+</ul>
+<h3 id="中介者模式"><a class="markdownIt-Anchor" href="#中介者模式"></a> 中介者模式</h3>
+<ul>
+<li>用来降低多个对象和类之间的通信复杂度</li>
+<li>操作时将网状结构分离成星型结构(中心论)</li>
+<li>比如聊天室</li>
+</ul>
+<h3 id="备忘录模式"><a class="markdownIt-Anchor" href="#备忘录模式"></a> 备忘录模式</h3>
+<ul>
+<li>在不破坏封装性的前提下，获得一个对象的内部状态，并在对象之外保存这个状态</li>
+<li>像存档</li>
+</ul>
+<h3 id="观察者模式"><a class="markdownIt-Anchor" href="#观察者模式"></a> 观察者模式</h3>
+<ul>
+<li>存在一对多的关系时，当一个被改时，被依赖的类会被通知并自动更新。</li>
+<li>用一个集合去存这个</li>
+</ul>
+<h3 id="状态者模式"><a class="markdownIt-Anchor" href="#状态者模式"></a> 状态者模式</h3>
+<ul>
+<li>就是类的行为是由它的状态决定的</li>
+<li>但是这个对象，不同的状态对象还是不同的。</li>
+</ul>
+<h3 id="空对象模式"><a class="markdownIt-Anchor" href="#空对象模式"></a> 空对象模式</h3>
+<ul>
+<li>继承一下，一个抽象类，一个实例类，一个啥都不去做的空类，感觉没啥用，除了体系更健全。</li>
+</ul>
+<h3 id="策略模式"><a class="markdownIt-Anchor" href="#策略模式"></a> 策略模式</h3>
+<ul>
+<li>一个类的行为和算法能在运行时更改</li>
+<li>将算法打包成类，进行替换操作。不过几个算法要差不多，分装好才行。</li>
+</ul>
+<h3 id="模板模式"><a class="markdownIt-Anchor" href="#模板模式"></a> 模板模式</h3>
+<ul>
+<li>抽象类公开定义执行它的方法/模板。</li>
+<li>它的子类可以按需要重写方法实现</li>
+<li>好像没啥说的，就是很正常的。</li>
+</ul>
+<h3 id="访问者模式"><a class="markdownIt-Anchor" href="#访问者模式"></a> 访问者模式</h3>
+<ul>
+<li>将数据与数据结构分离开</li>
+<li>在被访问的类里面加一个对外提供接待访问者的接口。</li>
+<li>感觉这个的目的就在于防止对数据本生进行操作(加一层，有用？可能自我欺骗，嘿嘿嘿)</li>
+</ul>
+<h3 id="mvc模式"><a class="markdownIt-Anchor" href="#mvc模式"></a> mvc模式</h3>
+<ul>
+<li>Model-View-Controller（模型-视图-控制器） 模式，这个好像是挺重要的一个模式，之前就听说过这个东西。用于分层开发。</li>
+<li>model 代表一个存取数据的对象</li>
+<li>view 视图代表包含数据的可视化</li>
+<li>controller 控制器作用于模型和视图上，他控制数据流向模型对象，并在数据变化时更新视图</li>
+<li>不过咋感觉和那个适配器有点像，控制器那个</li>
+</ul>
+<h3 id="业务代表模式"><a class="markdownIt-Anchor" href="#业务代表模式"></a> 业务代表模式</h3>
+<ul>
+<li>用于对表示层和业务层解耦，前端和后端分离？</li>
+<li>业务实现向外暴露统一接口。由业务代表来具体查询和掉用业务接口执行相关业务，而客户则只需要想业务代表调用相关简化后的接口即可实现响应业务。</li>
+<li>好像springboot里面的controler和service，集成一下，再暴露给外面。</li>
+</ul>
+<h3 id="组合实体模式"><a class="markdownIt-Anchor" href="#组合实体模式"></a> 组合实体模式</h3>
+<ul>
+<li>说用在ejb持久化机制里面？？？？</li>
+<li>先码着，四个参与者</li>
+<li>组合实体，粗粒度对象，依赖对象，策略</li>
+<li>ememe看那个例子，感觉就是</li>
+</ul>
+<h3 id="数据访问对象模式"><a class="markdownIt-Anchor" href="#数据访问对象模式"></a> 数据访问对象模式</h3>
+<ul>
+<li>用在把低级的数据访问api从高级的业务服务中分离出来。</li>
+<li>三个组成部分</li>
+<li>数据访问对象接口</li>
+<li>数据访问对象实体类</li>
+<li>模型对象/数值对象</li>
+<li>这个感觉好像还挺重要的，对象于数据库里面一行进行对应。</li>
+</ul>
+<h3 id="前端控制器模式"><a class="markdownIt-Anchor" href="#前端控制器模式"></a> 前端控制器模式</h3>
+<ul>
+<li>目的在于提供一个集中的请求处理机制</li>
+<li>前端控制器： 处理应用程序所有类型请求的单个处理程序</li>
+<li>调度器：前端控制器可能使用一个调度器对象来调度请求到相应的具体处理程序</li>
+<li>视图是为请求而创建的对象</li>
+</ul>
+<h3 id="拦截过滤器模式"><a class="markdownIt-Anchor" href="#拦截过滤器模式"></a> 拦截过滤器模式</h3>
+<ul>
+<li>目的是对应用程序的请求或响应做一些预处理/后处理，</li>
+</ul>
+<h3 id="服务定位器模式"><a class="markdownIt-Anchor" href="#服务定位器模式"></a> 服务定位器模式</h3>
+<ul>
+<li>目的是利用缓存来解决在查找服务代价高的问题</li>
+</ul>
+<h3 id="传输对象模式"><a class="markdownIt-Anchor" href="#传输对象模式"></a> 传输对象模式</h3>
+<ul>
+<li>用于客户端向服务器一次性传递多个带属性的数值</li>
+<li>感觉就是相当于多一个模板从省城的作用</li>
+</ul>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<blockquote>
+<p>哇,23个设计模式，好多啊，看的我头皮发麻，很多感觉也只是一知半解，这个还是得通过以后得面对对象编程去总结经验。这个并不是什么教学啊，这只是我的个人笔记，有想法的去看<a href="http://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">菜鸟教程</a><br>
+这个设计模式，主要的目的是提高一个代码的规范性，可扩展性，还有就是一些常见的面对对象的一个技巧，不管怎么说，万物皆对象。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/面试常见问题-数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/21/面试常见问题-数据结构/" itemprop="url">面试常见问题[数据结构]</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T21:52:45+08:00">
+                2019-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>可以说除了大体的设计，上课学的数据结构忘光光了。发现现在面试都是这种问题，我就自己复习一遍把</p>
+</blockquote>
+<h2 id="线性表"><a class="markdownIt-Anchor" href="#线性表"></a> 线性表</h2>
+<h3 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h3>
+<blockquote>
+<p>没啥好说的</p>
+</blockquote>
+<h3 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h3>
+<blockquote>
+<p>开空间的话可以有两种方法</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p; p = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> *p; p = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>几种内存分配的函数</strong><br>
+&lt;1&gt;alloca是向栈申请内存,因此无需释放.<br>
+&lt;2&gt;malloc分配的内存是位于堆中的,并且没有初始化内存的内容,因此基本上malloc之后,调用函数memset来初始化这部分的内存空间.<br>
+&lt;3&gt;calloc则将初始化这部分的内存,设置为0.<br>
+&lt;4&gt;realloc则对malloc申请的内存进行大小的调整.</p>
+</blockquote>
+<blockquote>
+<p><strong>堆，栈，静态存储区的 区别</strong><br>
+对于堆区、栈区和静态存储区它们之间最大的不同在于，栈的生命周期很短暂。但是堆区和静态存储区的生命周期相当于与程序的生命同时存在（如果您不在程序运行中间将堆内存delete的话），我们将这种变量或数据成为全局变量或数据。但是，对于堆区的内存空间使用更加灵活，因为它允许你在不需要它的时候，随时将它释放掉，而静态存储区将一直存在于程序的整个生命周期中。</p>
+</blockquote>
+<h4 id="单链表"><a class="markdownIt-Anchor" href="#单链表"></a> 单链表</h4>
+<p>只能向一个方向走呗</p>
+<h4 id="双向链表"><a class="markdownIt-Anchor" href="#双向链表"></a> 双向链表</h4>
+<p>两个方向呗</p>
+<h4 id="循环链表"><a class="markdownIt-Anchor" href="#循环链表"></a> 循环链表</h4>
+<p>没啥好说的</p>
+<h2 id="栈与队列"><a class="markdownIt-Anchor" href="#栈与队列"></a> 栈与队列</h2>
+<h3 id="stack"><a class="markdownIt-Anchor" href="#stack"></a> stack</h3>
+<p>满足后进先出</p>
+<h3 id="queue"><a class="markdownIt-Anchor" href="#queue"></a> queue</h3>
+<p>满足先进先出</p>
+<h2 id="树"><a class="markdownIt-Anchor" href="#树"></a> 树</h2>
+<p>只有父节点的东西</p>
+<h3 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h3>
+<p>每个节点最多只有两个子节点</p>
+<blockquote>
+<p><strong>三种遍历方式</strong></p>
+</blockquote>
+<ul>
+<li>先序遍历 中左右</li>
+<li>中序遍历 左中右</li>
+<li>后序遍历 左右中</li>
+</ul>
+<h3 id="平衡二叉树"><a class="markdownIt-Anchor" href="#平衡二叉树"></a> 平衡二叉树</h3>
+<p>就是对节点加入了左右旋的操作，目的在于控制深度</p>
+<h3 id="堆"><a class="markdownIt-Anchor" href="#堆"></a> 堆</h3>
+<p>这个就是满足<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><mo>=</mo><msub><mi>a</mi><mrow><mi>i</mi><mo>∗</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_i&gt;=a_{i*2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mbin mtight">∗</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><mo>=</mo><msub><mi>a</mi><mrow><mi>i</mi><mo>∗</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_i&gt;=a_{i*2+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.747431em;vertical-align:-0.208331em;"></span><span class="base"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mbin mtight">∗</span><span class="mord mtight">2</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"></span></span></span></span></span></span></span></span>的一种数据结构，可以用线性表来实现，保证这个就行，然后就是满足了O(1)查找，O(log(n))更新。</p>
+<h3 id="红黑树"><a class="markdownIt-Anchor" href="#红黑树"></a> 红黑树</h3>
+<p>这个还是我第一次看到这个</p>
+<ul>
+<li>（1）每个节点或者是黑色，或者是红色。</li>
+<li>（2）根节点是黑色。</li>
+<li>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>（4）如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ul>
+<h4 id="左旋"><a class="markdownIt-Anchor" href="#左旋"></a> 左旋</h4>
+<p>这里的左旋很简单，就是把现在节点的右节点变成现节点，把原来右节点的左儿子变成原来的右节点。</p>
+<h4 id="右旋"><a class="markdownIt-Anchor" href="#右旋"></a> 右旋</h4>
+<p>差不多把，左儿子变爸爸，左儿子的右孙子变成爸爸的左儿子</p>
+<h4 id="添加"><a class="markdownIt-Anchor" href="#添加"></a> 添加</h4>
+<blockquote>
+<p>这个还是挺麻烦的。要考虑很多情况，主要思想就是</p>
+</blockquote>
+<ul>
+<li>按二叉树的方式，插进去。</li>
+<li>节点变红</li>
+<li>开始调整。关键思想就是<strong>将红色的节点移到根节点；然后，将根节点设为黑色</strong></li>
+</ul>
+<h4 id="删除"><a class="markdownIt-Anchor" href="#删除"></a> 删除</h4>
+<blockquote>
+<p>这个怎么说呢，感觉上就是分情况讨论为主。</p>
+</blockquote>
+<h3 id="b树"><a class="markdownIt-Anchor" href="#b树"></a> b树</h3>
+<p>这个就是平衡多路查找树</p>
+<blockquote>
+<p>B 树是为了磁盘或其它存储设备而设计的一种多叉平衡二叉树，他好在啥，好像是在硬盘i/o方面有一定的好处。</p>
+</blockquote>
+<h4 id="性质"><a class="markdownIt-Anchor" href="#性质"></a> 性质</h4>
+<ul>
+<li>根节点至少有两个子节点</li>
+<li>每个节点有M-1个key，并且以升序排列</li>
+<li>位于M-1和M key的子节点的值位于M-1 和M key对应的Value之间</li>
+<li>其它节点至少有M/2个子节点</li>
+</ul>
+<h4 id="插入删除"><a class="markdownIt-Anchor" href="#插入删除"></a> 插入删除</h4>
+<blockquote>
+<p>这个就比那些奇奇怪怪的东西好多了，他的关键思想就是，找到位置，插进去。塞不下了，就飞到父亲节点那去，父亲节点满了就分裂嘛。删除的思想就是找到中序遍历的比根节点第一个大的点，替上去，下面再进行修改。</p>
+</blockquote>
+<h3 id="b树-2"><a class="markdownIt-Anchor" href="#b树-2"></a> b+树</h3>
+<p>相对那个b树来说多了几个性质</p>
+<ul>
+<li>有k个子节点的节点有k个关键码</li>
+<li>非叶子节点只有索引的功能</li>
+<li>树的所有叶节点构成一个有序链表，可以按照关键码排序的次序遍历。</li>
+</ul>
+<h4 id="插入删除方面"><a class="markdownIt-Anchor" href="#插入删除方面"></a> 插入删除方面</h4>
+<blockquote>
+<p>相对b树来说主要的问题就是，b树有个节点上浮的过程，但是b+不是，只是把那个复制一个上去。</p>
+</blockquote>
+<h4 id="应用"><a class="markdownIt-Anchor" href="#应用"></a> 应用</h4>
+<p>文件存储系统以及数据库系统<br>
+局部性原理，程序运行期间所需要的数据很集中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/面试常见问题-计算机网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/19/面试常见问题-计算机网络/" itemprop="url">面试常见问题[计网]</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T16:29:28+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="计算机网络"><a class="markdownIt-Anchor" href="#计算机网络"></a> 计算机网络</h3>
+<h4 id="tcp和udp有什么区别"><a class="markdownIt-Anchor" href="#tcp和udp有什么区别"></a> TCP和UDP有什么区别？</h4>
+<blockquote>
+<p>TCP和UDP是OSI模型中的运输层中的协议。TCP提供可靠的通信传输，而UDP则常被用于让广播和细节控制交给应用的通信传输。<br>
+两者的区别大致如下：</p>
+</blockquote>
+<ul>
+<li>TCP面向连接，UDP面向非连接即发送数据前不需要建立链接</li>
+<li>TCP提供可靠的服务（数据传输），UDP无法保证</li>
+<li>TCP面向字节流，UDP面向报文</li>
+<li>TCP数据传输慢，UDP数据传输快</li>
+</ul>
+<h4 id="tcp的三次握手4次挥手"><a class="markdownIt-Anchor" href="#tcp的三次握手4次挥手"></a> tcp的三次握手，4次挥手</h4>
+<p>在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认号并交换 TCP窗口大小信息[这个和传输速度相关]。<br>
+三次握手是</p>
+<ul>
+<li>客户端向服务端发送连接请求</li>
+<li>服务端向客户端发送收到</li>
+<li>客户端向服务端发送确认的<br>
+四次挥手</li>
+<li>客户端向服务端发送关闭请求</li>
+<li>服务端收到关闭请求，然后客户端向服务端发送的通道关闭</li>
+<li>服务端向客户端发送一个关闭的请求</li>
+<li>客户端收到关闭请求，然后服务端关闭向客户端发送的通道。</li>
+</ul>
+<h4 id="https协议"><a class="markdownIt-Anchor" href="#https协议"></a> https协议</h4>
+<table>
+<thead>
+<tr>
+<th>行为</th>
+<th>干啥的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>对服务器资源的简单请求</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>用于发送包含用户提交数据的请求</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>类似于GET请求，不过返回的响应中没有具体内容，用于获取报头</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>传说中请求文档的一个版本</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>发出一个删除指定文档的请求</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>发送一个请求副本，以跟踪其处理进程</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>返回所有可用的方法，检查服务器支持哪些方法</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>用于ssl隧道的基于代理的请求</td>
+</tr>
+</tbody>
+</table>
+<h4 id="http中get和post的区别"><a class="markdownIt-Anchor" href="#http中get和post的区别"></a> http中get和post的区别</h4>
+<p>从原理性看：</p>
+<p>根据HTTP规范，GET用于信息获取，而且应该是安全和幂等的<br>
+根据HTTP规范，POST请求表示可能修改服务器上资源的请求<br>
+从表面上看：</p>
+<p>GET请求的数据会附在URL后面，POST的数据放在HTTP包体<br>
+POST安全性比GET安全性高</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/hexo博客如何配置到服务器上/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1621,439 +2439,6 @@ hdu4405,poj2096,hdu3853,zoj3329,hdu2262,poj3744,poj3071,poj2151,zoj3380.</p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/莫比乌斯思路/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/莫比乌斯思路/" itemprop="url">莫比乌斯思想</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T14:06:18+08:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="莫比乌斯的一些想法"><a class="markdownIt-Anchor" href="#莫比乌斯的一些想法"></a> 莫比乌斯的一些想法</h3>
-<h4 id="首先你要知道莫比乌斯是什么"><a class="markdownIt-Anchor" href="#首先你要知道莫比乌斯是什么"></a> 首先你要知道莫比乌斯是什么</h4>
-<blockquote>
-<p> 这个在前期的时候，他是一种知识点，到后期，它就是一种思想，一种工具。说到底他就是一种容斥的操作</p>
-</blockquote>
-<h4 id="现在主流的莫比乌斯有两种"><a class="markdownIt-Anchor" href="#现在主流的莫比乌斯有两种"></a> 现在主流的莫比乌斯有两种</h4>
-<ol>
-<li>第一种<br>
-$ F_n = \sum_{d|n}^n f_d $<br>
-$ f_n = \sum_{d|n}^n u_d*F_{\frac{n}{d}} $</li>
-<li>第二种<br>
-$F_n = \sum_{n|d}f_d $<br>
-$f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d $</li>
-</ol>
-<blockquote>
-<p> 具体的公式推导，一种常见的是你通过举一些例子推出这个公式，还有就是通过狄利克雷卷去证明这个式子，我比较菜，就不献丑了.你可以去百度看下，我的博客也不会特别去处理这些东西，能力不够，我现在对很多东西也都是会用，原理什么的不敢恭维。我写的更多在于我自己对于这些东西的思考。我是通过那些方面去思考的。</p>
-</blockquote>
-<h4 id="怎么用"><a class="markdownIt-Anchor" href="#怎么用"></a> 怎么用</h4>
-<p> 其实上面的公式也说明了,这个 $ u_i $ 莫比乌斯函数是一定的，那我们只需要去构造 $ f_n , F_n $ 就ok了，当然了，难点也就在于这个构造的方法。<br>
- 不过我们这里的公式已经给你了，你去思考怎么凑便会简单一点，还有就是我们这样干的目的最终是为了容斥，这样想就会稍微简单一点吧。</p>
-<h4 id="模板"><a class="markdownIt-Anchor" href="#模板"></a> 模板</h4>
-<p>  放一份莫比乌斯的板子，哎呀妈呀数学真的太强大了。其实线性筛真的强大，他能处理所有的积性函数真的秀</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">bool</span> check[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> mu[MAXN+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Moblus</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    clr(check,<span class="number">0</span>);</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= MAXN; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( !check[i] )</span><br><span class="line">        &#123;</span><br><span class="line">            prime[tot++] = i;</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i * prime[j] &gt; MAXN) <span class="keyword">break</span>;</span><br><span class="line">            check[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>( i % prime[j] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                mu[i * prime[j]] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/博弈/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/博弈/" itemprop="url">博弈论[之前看博弈的一些理解]</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T14:00:51+08:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="博弈方面的一些看法"><a class="markdownIt-Anchor" href="#博弈方面的一些看法"></a> 博弈方面的一些看法</h1>
-<blockquote>
-<p>博弈这个玩意是真的烦，会的时候是弱智题不会的时候他妈天方夜谭。</p>
-</blockquote>
-<p>说下个人的看法以及各种题型</p>
-<h2 id="主要的解题思想"><a class="markdownIt-Anchor" href="#主要的解题思想"></a> 主要的解题思想</h2>
-<p>官方说的是通过必败点和必胜点来判定<br>
-先通过必败点来推，直接来看必胜点，把问题抽象成图 把状态抽象成点，必败点就是先手必败点，然后通过必败点能走到的搞成必胜点，如过有一个状态没有走过 而且他后面的路都是必胜点那么他就是必败点。感觉就像dp一样，记忆化搜索。<br>
-当然题目不可能出的那么简单的。<br>
-不过根据雄爷定理，万事不离期宗，掌握基本，扩展自己去发掘。</p>
-<h2 id="主要的题型"><a class="markdownIt-Anchor" href="#主要的题型"></a> 主要的题型</h2>
-<h4 id="巴什博弈"><a class="markdownIt-Anchor" href="#巴什博弈"></a> 巴什博弈</h4>
-<p>这个是最简单的博弈，就是一堆东西，每个人自己能拿1-n件，谁最后一个拿完谁赢，这个是最简单的，不记录。</p>
-<h4 id="威佐夫博弈"><a class="markdownIt-Anchor" href="#威佐夫博弈"></a> 威佐夫博弈</h4>
-<p>有两堆各若干个物品，两个人轮流从某一堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
-这个的解题思路在于通过前面的那个np问题来解决，用局势来思考这些问题，前几个局势在于(0,0),(1,2),(3,5),(4,7)…然后一些大佬就总结出了一些牛逼的结论( ak,bk),<code>ak=k*(spat(5)+1)/2 , bk = ak+k</code>人才。</p>
-<h4 id="fibonacci博弈"><a class="markdownIt-Anchor" href="#fibonacci博弈"></a> Fibonacci博弈</h4>
-<p>有一堆个数为n的石子，游戏双方轮流取石子，满足：</p>
-<ol>
-<li>先手不能在第一次把所有的石子取完；</li>
-<li>之后每次可以取的石子数介于1到对手刚取的石子数的2倍之间（包含1和对手刚取的石子数的2倍）。 约定取走最后一个石子的人为赢家。</li>
-</ol>
-<blockquote>
-<p>这个的解决办法涉及到齐肯多夫定理不去了解。没办法本人太笨</p>
-</blockquote>
-<p>结论是 <code>当n为Fibonacci数时，先手必败</code></p>
-<h4 id="尼姆博弈"><a class="markdownIt-Anchor" href="#尼姆博弈"></a> 尼姆博弈</h4>
-<p>有三堆各若干个物品，两个人轮流从某一堆取任意多的物品，规定每次至少取一个，多者不限，最后取光者得胜。<br>
-这个博弈有点意思 他的<code>必败点的局势在于(a,b,c) a^b^c = 0</code></p>
-<blockquote>
-<p>不过不换怎么说，注意他们的游戏方式 这只是最基础的几种博弈，方法都是通过前面的那个基础来进行扩展的</p>
-</blockquote>
-<h4 id="sg函数"><a class="markdownIt-Anchor" href="#sg函数"></a> SG函数</h4>
-<p>这个在看之前感觉很高级但是啊，好像也就是一个dp的过程，通过一个必败点，看成起点然后，那个方法看成通向下一个起点的路，然后找所有能直接到这个必败点的必胜点。好像也就那么回事。好像能解决的都是小数字题这是一个板子，f里面存的是方法，多堆问题可以转化成异或来解决。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getSG</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="built_in">memset</span>(SG,<span class="number">0</span>,<span class="keyword">sizeof</span>(SG));</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(S,<span class="number">0</span>,<span class="keyword">sizeof</span>(S));</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; f[j] &lt;= i &amp;&amp; j &lt;= N; j++)</span><br><span class="line">            S[SG[i-f[j]]] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>;;j++) <span class="keyword">if</span>(!S[j])&#123;</span><br><span class="line">            SG[i] = j;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="解题的方法"><a class="markdownIt-Anchor" href="#解题的方法"></a> 解题的方法</h2>
-<ul>
-<li>1　：相信自己的第一感觉</li>
-<li>2　：博弈都会和一些特别的数搭边 ， 所以第一件事坑定是分析局势然后找找看是不是有特别的意义，像什么 卡特兰数，fib数列 ，幂次方，异或的值是否为0；</li>
-<li>3 : 不挂怎么说，记得打表。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/dp常见模板/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="langman">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mypic.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="langman's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/dp常见模板/" itemprop="url">dp 常见模板</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T02:33:12+08:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="最大上升子序列"><a class="markdownIt-Anchor" href="#最大上升子序列"></a> 最大上升子序列</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LIS(LDS)</span><br><span class="line">template&lt;class Cmp&gt;  </span><br><span class="line">int LIS (Cmp cmp)(nlogn)  </span><br><span class="line">&#123;  </span><br><span class="line">    static int m, end[N];  </span><br><span class="line">    m = 0;  </span><br><span class="line">    for (int i=0;i&lt;n;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        int pos = lower_bound(end, end+m, a[i], cmp)-end;  </span><br><span class="line">        end[pos] = a[i], m += pos==m;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return m;  </span><br><span class="line">&#125;  </span><br><span class="line">    cout &lt;&lt; LIS(less&lt;int&gt;()) &lt;&lt; endl;         //严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(less_equal&lt;int&gt;()) &lt;&lt; endl;   //非严格上升  </span><br><span class="line">    cout &lt;&lt; LIS(greater&lt;int&gt;()) &lt;&lt; endl;      //严格下降  </span><br><span class="line">    cout &lt;&lt; LIS(greater_equal&lt;int&gt;()) &lt;&lt; endl;//非严格下降</span><br></pre></td></tr></table></figure>
-<h3 id="最大公共子序列"><a class="markdownIt-Anchor" href="#最大公共子序列"></a> 最大公共子序列</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">留个递推公式,差不多的意思(n^2)</span><br><span class="line"></span><br><span class="line">   dp[i][j]=dp[i-1][j-1]+1;</span><br><span class="line">   dp[i][j]=max(dp[i-1][j],dp[i][j-1]);</span><br><span class="line">   dp[0][0]=0;</span><br></pre></td></tr></table></figure>
-<h3 id="前向星造图法"><a class="markdownIt-Anchor" href="#前向星造图法"></a> 前向星造图法</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span>&#123;</span>          <span class="comment">//图的单位,边的结构体</span></span><br><span class="line">  <span class="keyword">int</span> to;             <span class="comment">//儿子</span></span><br><span class="line">  <span class="keyword">int</span> next;           <span class="comment">//同父的下一个结点</span></span><br><span class="line">  <span class="keyword">int</span> w;              <span class="comment">//权</span></span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span> <span class="comment">//加边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  edge[tot].to = v;</span><br><span class="line">  edge[tot].w = w;</span><br><span class="line">  edge[tot].next = head[u];</span><br><span class="line">  head[u] = tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(u,v)</span><span class="comment">//遍历的规则,单边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i =head[u];i!=<span class="number">-1</span>;i = edge[i].next)</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">     <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">     伪代码区</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span><span class="comment">//双边</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u];i!=<span class="number">-1</span>;i=edge[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">int</span> v = edge[i].next;</span><br><span class="line">      <span class="keyword">int</span> w = edge[i].w;</span><br><span class="line">      <span class="keyword">if</span>(v != father)</span><br><span class="line">      &#123;</span><br><span class="line">        伪代码</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="什么是开挂"><a class="markdownIt-Anchor" href="#什么是开挂"></a> 什么是开挂</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">poj <span class="number">3107</span> 不开 <span class="number">500</span>ms</span><br><span class="line">         开了 <span class="number">188</span>ms</span><br><span class="line">         类型应该是何前面的(<span class="keyword">int</span>) 相对应</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//加快输入输出</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> k=<span class="number">0</span>;<span class="keyword">char</span> ls;ls=getchar();<span class="keyword">for</span>(;ls&lt;<span class="string">'0'</span>||ls&gt;<span class="string">'9'</span>;k=ls,ls=getchar());</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;<span class="keyword">for</span>(;ls&gt;=<span class="string">'0'</span>&amp;&amp;ls&lt;=<span class="string">'9'</span>;ls=getchar())x=x*<span class="number">10</span>+ls-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="string">'-'</span>)x=<span class="number">0</span>-x;<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="状态压缩里面常用的一些东西"><a class="markdownIt-Anchor" href="#状态压缩里面常用的一些东西"></a> 状态压缩里面常用的一些东西</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1 获得当前行的数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getnum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    x &amp;= x<span class="number">-1</span>;</span><br><span class="line">    ret++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2 看当前行左右是不是满足题设</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x &amp; x&lt;&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 看是不是可以满足条件,和题目给的图一样,是可以放的,并且和上一个是不是会冲突</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">suit</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x&amp;y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="数位dp"><a class="markdownIt-Anchor" href="#数位dp"></a> 数位dp</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 把各个数位上的数字存进去</span></span><br><span class="line">ll dfs(int len(数位),....(中间各个东西的转化),flag(是否在最高位,要限制))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span>(len&lt;<span class="number">0</span>) <span class="keyword">return</span> ..;</span><br><span class="line">  <span class="keyword">if</span>(!flag &amp;&amp; ~dp[len][...]) <span class="keyword">return</span> dp[len][...];</span><br><span class="line">  ll ans= <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> Max = flag?shu[len]:<span class="number">9</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=Max;i++)</span><br><span class="line">   &#123;</span><br><span class="line">     ans += dfs(len<span class="number">-1</span>,...,flag&amp;&amp;i==Max);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(!flag) dp[len][...] = ans;</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">slove</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> co = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(x)</span><br><span class="line">  &#123;</span><br><span class="line">    shu[co] = x%<span class="number">10</span>;</span><br><span class="line">    x/=<span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dfs(co<span class="number">-1</span>,...,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">这是主要的一个套路;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2108,7 +2493,7 @@ $f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d $</li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2121,7 +2506,7 @@ $f_n = \sum_{n|d}u_{\frac{d}{n}}*F_d $</li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

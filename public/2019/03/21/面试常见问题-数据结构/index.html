@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="可以说除了大体的设计，上课学的数据结构忘光光了。发现现在面试都是这种问题，我就自己复习一遍把   线性表  数组  没啥好说的   链表  开空间的话可以有两种方法  12int *p; p = new int[10];int *p; p = (int *)malloc(sizeof(int)*10);  几种内存分配的函数 &amp;lt;1&amp;gt;alloca是向栈申请内存,因此无需释放. &amp;lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试常见问题[数据结构]">
+<meta property="og:url" content="http://yoursite.com/2019/03/21/面试常见问题-数据结构/index.html">
+<meta property="og:site_name" content="langman&#39;s blog">
+<meta property="og:description" content="可以说除了大体的设计，上课学的数据结构忘光光了。发现现在面试都是这种问题，我就自己复习一遍把   线性表  数组  没啥好说的   链表  开空间的话可以有两种方法  12int *p; p = new int[10];int *p; p = (int *)malloc(sizeof(int)*10);  几种内存分配的函数 &amp;lt;1&amp;gt;alloca是向栈申请内存,因此无需释放. &amp;lt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-22T17:55:44.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试常见问题[数据结构]">
+<meta name="twitter:description" content="可以说除了大体的设计，上课学的数据结构忘光光了。发现现在面试都是这种问题，我就自己复习一遍把   线性表  数组  没啥好说的   链表  开空间的话可以有两种方法  12int *p; p = new int[10];int *p; p = (int *)malloc(sizeof(int)*10);  几种内存分配的函数 &amp;lt;1&amp;gt;alloca是向栈申请内存,因此无需释放. &amp;lt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/21/面试常见问题-数据结构/"/>
+
+
+
+
+
+  <title>面试常见问题[数据结构] | langman's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">langman's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">do what i want</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            links
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/面试常见问题-数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="langman">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mypic.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="langman's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试常见问题[数据结构]</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T21:52:45+08:00">
+                2019-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>可以说除了大体的设计，上课学的数据结构忘光光了。发现现在面试都是这种问题，我就自己复习一遍把</p>
+</blockquote>
+<h2 id="线性表"><a class="markdownIt-Anchor" href="#线性表"></a> 线性表</h2>
+<h3 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h3>
+<blockquote>
+<p>没啥好说的</p>
+</blockquote>
+<h3 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h3>
+<blockquote>
+<p>开空间的话可以有两种方法</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p; p = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> *p; p = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>几种内存分配的函数</strong><br>
+&lt;1&gt;alloca是向栈申请内存,因此无需释放.<br>
+&lt;2&gt;malloc分配的内存是位于堆中的,并且没有初始化内存的内容,因此基本上malloc之后,调用函数memset来初始化这部分的内存空间.<br>
+&lt;3&gt;calloc则将初始化这部分的内存,设置为0.<br>
+&lt;4&gt;realloc则对malloc申请的内存进行大小的调整.</p>
+</blockquote>
+<blockquote>
+<p><strong>堆，栈，静态存储区的 区别</strong><br>
+对于堆区、栈区和静态存储区它们之间最大的不同在于，栈的生命周期很短暂。但是堆区和静态存储区的生命周期相当于与程序的生命同时存在（如果您不在程序运行中间将堆内存delete的话），我们将这种变量或数据成为全局变量或数据。但是，对于堆区的内存空间使用更加灵活，因为它允许你在不需要它的时候，随时将它释放掉，而静态存储区将一直存在于程序的整个生命周期中。</p>
+</blockquote>
+<h4 id="单链表"><a class="markdownIt-Anchor" href="#单链表"></a> 单链表</h4>
+<p>只能向一个方向走呗</p>
+<h4 id="双向链表"><a class="markdownIt-Anchor" href="#双向链表"></a> 双向链表</h4>
+<p>两个方向呗</p>
+<h4 id="循环链表"><a class="markdownIt-Anchor" href="#循环链表"></a> 循环链表</h4>
+<p>没啥好说的</p>
+<h2 id="栈与队列"><a class="markdownIt-Anchor" href="#栈与队列"></a> 栈与队列</h2>
+<h3 id="stack"><a class="markdownIt-Anchor" href="#stack"></a> stack</h3>
+<p>满足后进先出</p>
+<h3 id="queue"><a class="markdownIt-Anchor" href="#queue"></a> queue</h3>
+<p>满足先进先出</p>
+<h2 id="树"><a class="markdownIt-Anchor" href="#树"></a> 树</h2>
+<p>只有父节点的东西</p>
+<h3 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h3>
+<p>每个节点最多只有两个子节点</p>
+<blockquote>
+<p><strong>三种遍历方式</strong></p>
+</blockquote>
+<ul>
+<li>先序遍历 中左右</li>
+<li>中序遍历 左中右</li>
+<li>后序遍历 左右中</li>
+</ul>
+<h3 id="平衡二叉树"><a class="markdownIt-Anchor" href="#平衡二叉树"></a> 平衡二叉树</h3>
+<p>就是对节点加入了左右旋的操作，目的在于控制深度</p>
+<h3 id="堆"><a class="markdownIt-Anchor" href="#堆"></a> 堆</h3>
+<p>这个就是满足<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><mo>=</mo><msub><mi>a</mi><mrow><mi>i</mi><mo>∗</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_i&gt;=a_{i*2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mbin mtight">∗</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><mo>=</mo><msub><mi>a</mi><mrow><mi>i</mi><mo>∗</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">a_i&gt;=a_{i*2+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.5391em;"></span><span class="strut bottom" style="height:0.747431em;vertical-align:-0.208331em;"></span><span class="base"><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mbin mtight">∗</span><span class="mord mtight">2</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"></span></span></span></span></span></span></span></span>的一种数据结构，可以用线性表来实现，保证这个就行，然后就是满足了O(1)查找，O(log(n))更新。</p>
+<h3 id="红黑树"><a class="markdownIt-Anchor" href="#红黑树"></a> 红黑树</h3>
+<p>这个还是我第一次看到这个</p>
+<ul>
+<li>（1）每个节点或者是黑色，或者是红色。</li>
+<li>（2）根节点是黑色。</li>
+<li>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>（4）如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ul>
+<h4 id="左旋"><a class="markdownIt-Anchor" href="#左旋"></a> 左旋</h4>
+<p>这里的左旋很简单，就是把现在节点的右节点变成现节点，把原来右节点的左儿子变成原来的右节点。</p>
+<h4 id="右旋"><a class="markdownIt-Anchor" href="#右旋"></a> 右旋</h4>
+<p>差不多把，左儿子变爸爸，左儿子的右孙子变成爸爸的左儿子</p>
+<h4 id="添加"><a class="markdownIt-Anchor" href="#添加"></a> 添加</h4>
+<blockquote>
+<p>这个还是挺麻烦的。要考虑很多情况，主要思想就是</p>
+</blockquote>
+<ul>
+<li>按二叉树的方式，插进去。</li>
+<li>节点变红</li>
+<li>开始调整。关键思想就是<strong>将红色的节点移到根节点；然后，将根节点设为黑色</strong></li>
+</ul>
+<h4 id="删除"><a class="markdownIt-Anchor" href="#删除"></a> 删除</h4>
+<blockquote>
+<p>这个怎么说呢，感觉上就是分情况讨论为主。</p>
+</blockquote>
+<h3 id="b树"><a class="markdownIt-Anchor" href="#b树"></a> b树</h3>
+<p>这个就是平衡多路查找树</p>
+<blockquote>
+<p>B 树是为了磁盘或其它存储设备而设计的一种多叉平衡二叉树，他好在啥，好像是在硬盘i/o方面有一定的好处。</p>
+</blockquote>
+<h4 id="性质"><a class="markdownIt-Anchor" href="#性质"></a> 性质</h4>
+<ul>
+<li>根节点至少有两个子节点</li>
+<li>每个节点有M-1个key，并且以升序排列</li>
+<li>位于M-1和M key的子节点的值位于M-1 和M key对应的Value之间</li>
+<li>其它节点至少有M/2个子节点</li>
+</ul>
+<h4 id="插入删除"><a class="markdownIt-Anchor" href="#插入删除"></a> 插入删除</h4>
+<blockquote>
+<p>这个就比那些奇奇怪怪的东西好多了，他的关键思想就是，找到位置，插进去。塞不下了，就飞到父亲节点那去，父亲节点满了就分裂嘛。删除的思想就是找到中序遍历的比根节点第一个大的点，替上去，下面再进行修改。</p>
+</blockquote>
+<h3 id="b树-2"><a class="markdownIt-Anchor" href="#b树-2"></a> b+树</h3>
+<p>相对那个b树来说多了几个性质</p>
+<ul>
+<li>有k个子节点的节点有k个关键码</li>
+<li>非叶子节点只有索引的功能</li>
+<li>树的所有叶节点构成一个有序链表，可以按照关键码排序的次序遍历。</li>
+</ul>
+<h4 id="插入删除方面"><a class="markdownIt-Anchor" href="#插入删除方面"></a> 插入删除方面</h4>
+<blockquote>
+<p>相对b树来说主要的问题就是，b树有个节点上浮的过程，但是b+不是，只是把那个复制一个上去。</p>
+</blockquote>
+<h4 id="应用"><a class="markdownIt-Anchor" href="#应用"></a> 应用</h4>
+<p>文件存储系统以及数据库系统<br>
+局部性原理，程序运行期间所需要的数据很集中。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/19/面试常见问题-计算机网络/" rel="next" title="面试常见问题[计网]">
+                <i class="fa fa-chevron-left"></i> 面试常见问题[计网]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/23/java设计模式/" rel="prev" title="java设计模式">
+                java设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/mypic.jpg"
+                alt="langman" />
+            
+              <p class="site-author-name" itemprop="name">langman</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bossxu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:7567636763@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cubercsl.cn/" title="csl" target="_blank">csl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ybmj.xyz/" title="ybmj" target="_blank">ybmj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://500kg.github.io/" title="500kg" target="_blank">500kg</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表"><span class="nav-number">1.</span> <span class="nav-text"> 线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">1.1.</span> <span class="nav-text"> 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表"><span class="nav-number">1.2.</span> <span class="nav-text"> 链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单链表"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 单链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双向链表"><span class="nav-number">1.2.2.</span> <span class="nav-text"> 双向链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环链表"><span class="nav-number">1.2.3.</span> <span class="nav-text"> 循环链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈与队列"><span class="nav-number">2.</span> <span class="nav-text"> 栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stack"><span class="nav-number">2.1.</span> <span class="nav-text"> stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#queue"><span class="nav-number">2.2.</span> <span class="nav-text"> queue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">3.</span> <span class="nav-text"> 树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树"><span class="nav-number">3.1.</span> <span class="nav-text"> 二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平衡二叉树"><span class="nav-number">3.2.</span> <span class="nav-text"> 平衡二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆"><span class="nav-number">3.3.</span> <span class="nav-text"> 堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树"><span class="nav-number">3.4.</span> <span class="nav-text"> 红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#左旋"><span class="nav-number">3.4.1.</span> <span class="nav-text"> 左旋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#右旋"><span class="nav-number">3.4.2.</span> <span class="nav-text"> 右旋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加"><span class="nav-number">3.4.3.</span> <span class="nav-text"> 添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">3.4.4.</span> <span class="nav-text"> 删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b树"><span class="nav-number">3.5.</span> <span class="nav-text"> b树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#性质"><span class="nav-number">3.5.1.</span> <span class="nav-text"> 性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入删除"><span class="nav-number">3.5.2.</span> <span class="nav-text"> 插入删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b树-2"><span class="nav-number">3.6.</span> <span class="nav-text"> b+树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入删除方面"><span class="nav-number">3.6.1.</span> <span class="nav-text"> 插入删除方面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用"><span class="nav-number">3.6.2.</span> <span class="nav-text"> 应用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">langman</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
