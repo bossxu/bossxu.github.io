@@ -1,9 +1,9 @@
 ---
 title: java设计模式
 date: 2019-03-23 13:51:29
-
 tags: ["面对对象","设计模式"]
 mathjax: true
+---
 
 
 ### 这是啥
@@ -131,7 +131,6 @@ public class xianchen
     }
 }
 ```
-<<<<<<< HEAD
 #### 静部内态类
 + lazy初始化
 + 多线程安全
@@ -145,26 +144,11 @@ public class xianchen
     }
     private xianchen(){}
     public static final xianchen getinstance()
-=======
-#### 登记式/静态内部类
-+ lazy初始化
-+ 多线程安全(classloader)
-+ 目的在于延迟加载实例，**只有显式调用才能出现显式装载**
-```java
-public class xianchen
-{
-    private static class xianchenHolder{
-        private static final xianchen instance = new xianchen()
-    }
-    private xianchen(){}
-    public static final xianchen getInstance 
->>>>>>> 6a09bfbd5e2c22b3e13f6d0737460d190dded675
     {
         return xianchenHolder.instance;
     }
 }
 ```
-<<<<<<< HEAD
 
 #### 枚举
 + 好像不太实用
@@ -325,4 +309,3 @@ public class xianchen
 ### 建造者模式
 > 使用多个简单的对象一步一步构建成一个复杂的对象，这种类型的设计模式属于创建型模式，**提供了一种创建对象**
 > 目的在于解决软件系统中，面临的“一个复杂对象”的创建工作，由于需求的变化，这个复杂对象的各个部分经常面临着剧烈的变化，但是组合他们的算法却相对稳定。
->>>>>>> 6a09bfbd5e2c22b3e13f6d0737460d190dded675
